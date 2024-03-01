@@ -3,7 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
 const mongoose = require('mongoose');
-const MongoDBStore = require('connect-mongodb-session')(session);
+// const MongoDBStore = require('connect-mongodb-session')(session);
 const routes = require('./routes/index'); // Adjust the path as per your new structure
 const path = require('path');
 const cors = require('cors');
