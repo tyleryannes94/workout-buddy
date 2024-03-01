@@ -25,10 +25,6 @@ exports.getMealPlanById = async (req, res) => {
 };
 
 
-exports.createMealPlanForUser = async (req, res) => {
-
-};
-
 exports.deleteMealPlanForUser = async (req, res) => {
     try {
         const { id } = req.params;
@@ -70,3 +66,8 @@ exports.updateMeal = async (req, res) => {
       res.status(500).json({ message: error.message });
   }
 };
+
+exports.createMealPlanForUser = async (req, res) => {
+    //will need to have this work with chatgpt prompt
+ 
+ };
