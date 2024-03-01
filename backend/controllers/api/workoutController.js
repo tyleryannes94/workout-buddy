@@ -48,5 +48,5 @@ exports.updateWorkout = async (req, res) => {
 };
 
 exports.createWorkoutPlanForUser = async (req, res) => {
-   
+   //will need to have this work with chatgpt prompt
 };
