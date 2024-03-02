@@ -29,58 +29,73 @@ exports.getMealById = async (req, res) => {
     }
 };
 
-function parseGeneratedPlanToMeals(generatedPlanRaw) {
-    const meals = [];
-    const days = generatedPlanRaw.split('Day ').slice(1); 
-    days.forEach(day => {
-        const mealEntries = day.split('\n').slice(1); 
-        mealEntries.forEach(entry => {
-            const parts = entry.match(/(Breakfast|Lunch|Dinner): (.+) \((\d+) calories\)/);
+
+async function createIndividualMeals(userId, generatedPlan) {
+    console.log("Starting to create individual meals for userId:", userId);
+    const mealDocs = [];
+    const days = generatedPlan.split('Day ').filter(Boolean);
+
+    for (const day of days) {
+        const meals = day.trim().split('\n').filter(line => line.match(/Breakfast:|Lunch:|Dinner:/));
+
+        for (const mealEntry of meals) {
+            const parts = mealEntry.match(/(Breakfast|Lunch|Dinner): (.+). Estimated calories: (\d+)/);
             if (parts) {
                 const [, mealType, description, calories] = parts;
-                meals.push({
-                    mealType,
+                console.log(`Creating meal: ${mealType} - ${description} with ${calories} calories.`);
+
+                const mealDoc = new Meal({
                     description,
                     calories: parseInt(calories, 10),
-                    date_created: new Date(), 
+                    date_created: new Date(),
                     userId: userId,
                 });
-            }
-        });
-    });
 
-    return meals;
+                const savedMeal = await mealDoc.save();
+                console.log(`Saved meal ID: ${savedMeal._id}`);
+                mealDocs.push(savedMeal._id);
+            } else {
+                console.log("Failed to parse meal entry:", mealEntry);
+            }
+        }
+    }
+    console.log("Completed creating individual meals.");
+    return mealDocs;
 }
 
-exports.createMeal = async (req, res) => {
+
+
+exports.createMealPlanForUser = async (req, res) => {
     const { userId } = req.params;
+    console.log("Attempting to create a meal plan for userId:", userId);
 
     try {
         const user = await User.findById(userId);
         if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+            console.log("User not found.");
+            return res.status(404).json({ message: 'User not found.' });
         }
 
-        const generatedPlanRaw = await generateMealPlan(userId);
-        const mealDescriptions = parseGeneratedPlanToMeals(generatedPlanRaw);
-
-        let createdMeals = [];
-        for (const mealData of mealDescriptions) {
-            const meal = new Meal({ ...mealData, userId: user._id });
-            await meal.save();
-            createdMeals.push(meal);
+        console.log("Generating meal plan...");
+        const generatedPlan = await generateMealPlan(userId);
+        if (!generatedPlan) {
+            console.log("Failed to generate meal plan.");
+            return res.status(400).json({ message: 'Failed to generate meal plan.' });
         }
 
-        user.meals.push(...createdMeals.map(meal => meal._id));
-        await user.save();
+        console.log("Creating individual meals...");
+        const mealIds = await createIndividualMeals(userId, generatedPlan);
+        console.log(`Created meals with IDs: ${mealIds.join(", ")}`);
 
-        res.status(201).json(user.meals);
+        const meals = await Meal.find({ '_id': { $in: mealIds } });
+        console.log(`Fetched ${meals.length} meals from the database.`);
+
+        res.status(201).json(meals);
     } catch (error) {
-        console.error('Error creating meal:', error);
-        res.status(500).json({ message: 'Internal server error' });
+        console.error('Error creating meal plan:', error);
+        res.status(500).json({ message: 'Internal server error.' });
     }
 };
-
 
 
 

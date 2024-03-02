@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get('/user/:userId', mealController.getAllMealsForUser);
 router.get('/:mealId', mealController.getMealById);
-router.post('/:userId', mealController.createMeal);
+router.post('/plan/:userId', mealController.createMealPlanForUser);
 router.patch('/:mealId', mealController.updateMeal);
 router.delete('/:mealId', mealController.deleteMeal);
 

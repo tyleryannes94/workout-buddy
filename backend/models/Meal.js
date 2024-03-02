@@ -7,10 +7,10 @@ const mealSchema = new Schema({
     required: false },
   calories: { 
     type: Number, 
-    required: true },
+    required: false },
   description: { 
     type: String, 
-    required: true },
+    required: false },
   date_created: { 
     type: Date, 
     required: false },
