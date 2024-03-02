@@ -9,11 +9,11 @@ const workoutSchema = new Schema({
     },
     workout_date: {
         type: Date,
-        required: true,
+        required: false,
     },
     workout_length: {
         type: Number,
-        required: true
+        required: false
     },
     workout_info: {
         type: [String], 
@@ -31,13 +31,16 @@ const workoutSchema = new Schema({
         type: String, 
         trim: true
     },
+    workout_description: {
+        type: String,
+    },
     user: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    date_completed: {
-        type: Date, // New field to record when the workout was completed
-        default: null, // Default to null indicating not completed
+    date_created: {
+        type: Date, 
+        default: null, 
     },
 },
 {

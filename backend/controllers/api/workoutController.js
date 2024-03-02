@@ -1,5 +1,7 @@
 const Workout = require('../../models/Workout'); 
 const User = require('../../models/User');
+const { generateWorkoutPlan } = require('../../utils/chatGPTWorkouts');
+
 
 exports.getWorkoutById = async (req, res) => {
     try {
@@ -46,6 +48,43 @@ exports.updateWorkout = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+async function createIndividualWorkouts(userId, generatedPlan) {
+    const workoutDocs = [];
+    const days = generatedPlan.split(/Day \d+:/).filter(Boolean);
+  
+    for (const day of days) {
+      const lines = day.trim().split('\n');
+      const workoutTypeDescription = lines[0];
+      const caloriesBurnedText = lines[lines.length - 1];
+  
+      const workoutTypeMatch = workoutTypeDescription.match(/^(.+?) - (.+)$/);
+      if (!workoutTypeMatch) continue;
+  
+      const workoutType = workoutTypeMatch[1].trim();
+      const workoutDescription = workoutTypeMatch[2].trim();
+  
+      const caloriesBurnedMatch = caloriesBurnedText.match(/Estimated calories burned: (\d+)/);
+      if (!caloriesBurnedMatch) continue;
+  
+      const caloriesBurned = parseInt(caloriesBurnedMatch[1], 10);
+      const workoutInfo = lines.slice(1, -1);
+  
+      const workoutDoc = new Workout({
+        workout_type: workoutType,
+        date_created: new Date(),
+        workout_length: workoutInfo.length,
+        workout_info: workoutInfo,
+        calories_burned: caloriesBurned,
+        user: userId,
+        workout_description: workoutDescription,
+      });
+  
+      const savedWorkout = await workoutDoc.save();
+      workoutDocs.push(savedWorkout._id);
+    }
+    return workoutDocs;
+}
 
 exports.createWorkoutPlanForUser = async (req, res) => {
     const { userId } = req.params;
