@@ -48,5 +48,21 @@ exports.updateWorkout = async (req, res) => {
 };
 
 exports.createWorkoutPlanForUser = async (req, res) => {
-   //will need to have this work with chatgpt prompt
+    const { userId } = req.params;
+  
+    try {
+      const user = await User.findById(userId);
+      if (!user) return res.status(404).json({ message: 'User not found.' });
+  
+      const generatedPlan = await generateWorkoutPlan(userId);
+      if (!generatedPlan) return res.status(400).json({ message: 'Failed to generate workout plan.' });
+  
+      const workoutIds = await createIndividualWorkouts(userId, generatedPlan);
+      const workouts = await Workout.find({ '_id': { $in: workoutIds } });
+  
+      res.status(201).json(workouts);
+    } catch (error) {
+      console.error('Error creating workout plan:', error);
+      res.status(500).json({ message: 'Internal server error.' });
+    }
 };
