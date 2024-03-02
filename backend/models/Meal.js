@@ -4,16 +4,19 @@ const Schema = mongoose.Schema;
 const mealSchema = new Schema({
   date_logged: { 
     type: Date, 
-    required: true },
+    required: false },
   calories: { 
     type: Number, 
     required: true },
   description: { 
     type: String, 
     required: true },
+  date_created: { 
+    type: Date, 
+    required: false },
   userId: { 
     type: Schema.Types.ObjectId, 
-    ref: 'User' }, // Reference to the user
+    ref: 'User' }, 
 });
 
 const Meal = mongoose.model('Meal', mealSchema);

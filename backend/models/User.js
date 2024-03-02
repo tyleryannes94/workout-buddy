@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
-const saltRounds = 10; // or another number you prefer
+const saltRounds = 10; 
 
 const Schema = mongoose.Schema;
 
@@ -26,15 +26,15 @@ const userSchema = new Schema({
         required: true
     },
     health_goals: {
-        type: [String], // Array of strings
+        type: [String], 
         trim: true,
     },
     workout_preferences: {
-        type: [String], // Array of strings
+        type: [String], 
         trim: true,
     },
     diet_type: {
-        type: [String], // Array of strings
+        type: [String], 
         trim: true
     },
     workouts: [{
@@ -49,9 +49,9 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'BodyTracking'
     }],
-    mealPlans: [{
+    meals: [{
         type: Schema.Types.ObjectId,
-        ref: 'MealPlan'
+        ref: 'Meal'
     }],
 },
 {
