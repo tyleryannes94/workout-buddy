@@ -1,6 +1,8 @@
 const WorkoutPlan = require('../../models/WorkoutPlan'); 
 const User = require('../../models/User');
 const Workout = require('../../models/Workout');
+const { generateWorkoutPlan } = require('../../utils/chatGPTWorkoutPlan');
+
 
 exports.getAllWorkoutPlansForUser = async (req, res) => {
     try {
@@ -38,8 +40,29 @@ exports.getAllWorkoutPlansForUser = async (req, res) => {
     }
   };
 
-exports.createWorkoutPlanForUser = async (req, res) => {
-   //will need to have this work with chatgpt prompt
 
-};
-
+  exports.createWorkoutPlanForUser = async (req, res) => {
+    const { userId } = req.params;
+  
+    try {
+      const user = await User.findById(userId);
+      if (!user) throw new Error('User not found.');
+  
+      const generatedPlan = await generateWorkoutPlan(userId);
+      if (!generatedPlan) throw new Error('Failed to generate workout plan.');
+  
+      const newWorkoutPlan = new WorkoutPlan({
+        user: userId,
+        workout_type: "Custom",
+        workout_info: [], 
+        workout_description: "Generated workout plan",
+      });
+  
+      const savedWorkoutPlan = await newWorkoutPlan.save();
+      
+      res.status(201).json(savedWorkoutPlan);
+    } catch (error) {
+      console.error('Error creating workout plan:', error);
+      res.status(500).json({ message: 'Internal server error.' });
+    }
+  };
