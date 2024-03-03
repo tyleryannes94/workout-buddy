@@ -29,7 +29,6 @@ exports.getMealById = async (req, res) => {
     }
 };
 
-
 async function createIndividualMeals(userId, generatedPlan) {
     console.log("Starting to create individual meals for userId:", userId);
     const mealDocs = [];
@@ -39,7 +38,8 @@ async function createIndividualMeals(userId, generatedPlan) {
         const meals = day.trim().split('\n').filter(line => line.match(/Breakfast:|Lunch:|Dinner:/));
 
         for (const mealEntry of meals) {
-            const parts = mealEntry.match(/(Breakfast|Lunch|Dinner): (.+). Estimated calories: (\d+)/);
+            // Updated regex to match the dash before calories
+            const parts = mealEntry.match(/(Breakfast|Lunch|Dinner): (.+) - (\d+) calories/);
             if (parts) {
                 const [, mealType, description, calories] = parts;
                 console.log(`Creating meal: ${mealType} - ${description} with ${calories} calories.`);
