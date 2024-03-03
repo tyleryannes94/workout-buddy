@@ -4,6 +4,7 @@ import Login from './components/Login';
 import SignupForm from './components/SignupForm';
 import Dashboard from './components/Dashboard';
 import CreateMeals from './components/CreateMeals';
+import CreateWorkouts from './components/CreateWorkouts';
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
     <Route path="/signup" element={<SignupForm />} />
     <Route path="/dashboard" element={<Dashboard />} />
     <Route path="/meals" element={<CreateMeals />} />
+    <Route path="/workouts" element={<CreateWorkouts />} />
 
     </Routes>
   </Router>
