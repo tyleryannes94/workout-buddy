@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import WorkoutBlock from './WorkoutBlock';
+import WorkoutBlock from './WorkoutBlock'; 
 
 const CreateWorkouts = () => {
   const [workouts, setWorkouts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false); 
-  const [isGenerating, setIsGenerating] = useState(false); 
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
   const userId = localStorage.getItem('userId');
 
@@ -13,7 +12,7 @@ const CreateWorkouts = () => {
   }, []);
 
   const fetchWorkouts = async () => {
-    if (!isGenerating) setIsLoading(true); 
+    setIsLoading(true);
     try {
       const response = await fetch(`/api/workouts/user/${userId}`);
       if (!response.ok) throw new Error('Failed to fetch workouts');
@@ -26,9 +25,8 @@ const CreateWorkouts = () => {
       setIsLoading(false);
     }
   };
-
   const generateNewWorkoutPlan = async () => {
-    setIsGenerating(true); 
+    setIsLoading(true);
     try {
       const response = await fetch(`/api/workouts/plan/${userId}`, {
         method: 'POST',
@@ -40,26 +38,27 @@ const CreateWorkouts = () => {
       console.error('Error generating new workout plan:', error);
       setError(error.message);
     } finally {
-      setIsGenerating(false); 
+      setIsLoading(false);
     }
   };
 
   return (
     <div>
       <h1>Workout Plans</h1>
-      <button onClick={generateNewWorkoutPlan} disabled={isLoading || isGenerating}>
-        {isGenerating ? 'Generating...' : 'Generate New Workout Plan'}
+      <button onClick={generateNewWorkoutPlan} disabled={isLoading}>
+        {isLoading ? 'Adding more workouts...' : 'Create more workouts'}
       </button>
-      {isGenerating && <div>Generating new workout plan...</div>}
-      {error && <div>Error: {error}</div>}
-      {workouts.length > 0 ? (
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>Error: {error}</div>
+      ) : workouts.length > 0 ? (
         workouts.map((workout) => (
           <WorkoutBlock key={workout._id} workout={workout} />
         ))
       ) : (
         <p>No workout plans available. Try generating new ones.</p>
       )}
-      {isLoading && !isGenerating && <div>Loading...</div>} 
     </div>
   );
 };
