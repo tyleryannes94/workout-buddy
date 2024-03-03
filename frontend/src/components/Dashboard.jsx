@@ -17,7 +17,7 @@ function Dashboard() {
         const workoutsData = await workoutsResponse.json();
         setWorkouts(workoutsData);
   
-        const mealsResponse = await fetch(`/api/meals/plan/${userId}`);
+        const mealsResponse = await fetch(`/api/meals/user/${userId}`);
         const mealsData = await mealsResponse.json();
         setMeals(mealsData);
       }

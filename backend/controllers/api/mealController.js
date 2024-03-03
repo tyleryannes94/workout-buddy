@@ -5,18 +5,13 @@ const { generateMealPlan } = require('../../utils/chatGPTMealPlan');
 
 exports.getAllMealsForUser = async (req, res) => {
     try {
-        const userId = req.params.userId;
-        const meals = await Meal.find({ user: userId });
-        
-        if (!meals.length) {
-            return res.status(404).json({ message: "No meals found for this user." });
-        }
-
+        const meals = await Meal.find({ userId: req.params.userId });
         res.json(meals);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
+
 
 
 exports.getMealById = async (req, res) => {
