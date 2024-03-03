@@ -32,36 +32,39 @@ exports.getMealById = async (req, res) => {
 async function createIndividualMeals(userId, generatedPlan) {
     console.log("Starting to create individual meals for userId:", userId);
     const mealDocs = [];
-    const days = generatedPlan.split('Day ').filter(Boolean);
 
-    for (const day of days) {
-        const meals = day.trim().split('\n').filter(line => line.match(/Breakfast:|Lunch:|Dinner:/));
+    // Use a more specific pattern to match the updated meal plan format.
+    const mealEntries = generatedPlan.match(/(Breakfast|Lunch|Dinner) - (.+) - Calories: (\d+)/g);
 
-        for (const mealEntry of meals) {
-            // Updated regex to match the dash before calories
-            const parts = mealEntry.match(/(Breakfast|Lunch|Dinner): (.+) - (\d+) calories/);
-            if (parts) {
-                const [, mealType, description, calories] = parts;
-                console.log(`Creating meal: ${mealType} - ${description} with ${calories} calories.`);
+    if (!mealEntries) {
+        console.log("No meals found in the generated plan.");
+        return [];
+    }
 
-                const mealDoc = new Meal({
-                    description,
-                    calories: parseInt(calories, 10),
-                    date_created: new Date(),
-                    userId: userId,
-                });
+    for (const entry of mealEntries) {
+        // Directly extract meal type, description, and calories using the updated pattern.
+        const [, mealType, description, calories] = entry.match(/(Breakfast|Lunch|Dinner) - (.+) - Calories: (\d+)/);
 
-                const savedMeal = await mealDoc.save();
-                console.log(`Saved meal ID: ${savedMeal._id}`);
-                mealDocs.push(savedMeal._id);
-            } else {
-                console.log("Failed to parse meal entry:", mealEntry);
-            }
+        try {
+            const mealDoc = new Meal({
+                description: description.trim(),
+                calories: parseInt(calories, 10),
+                date_created: new Date(),
+                userId: userId,
+            });
+
+            const savedMeal = await mealDoc.save();
+            console.log(`Saved meal ID: ${savedMeal._id}`);
+            mealDocs.push(savedMeal._id);
+        } catch (error) {
+            console.log("Error saving meal:", error);
         }
     }
-    console.log("Completed creating individual meals.");
+
+    console.log("Completed creating individual meals. Total meals created:", mealDocs.length);
     return mealDocs;
 }
+
 
 
 

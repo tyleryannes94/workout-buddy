@@ -16,7 +16,7 @@ async function generateMealPlan(userId) {
     }
 
     const preferencesText = user.diet_type.join(", ").replace(/, (?=[^,]*$)/, " and ");
-    const prompt = `Create a detailed 7-day meal plan for someone interested in a ${preferencesText} diet. Include meal descriptions, estimated calories per meal, ensuring the plan is balanced and nutritious, with three meals per day (breakfast, lunch, dinner).`;
+    const prompt = `Create a detailed 7-day meal plan for someone interested in a ${preferencesText} diet, ensuring the plan is balanced and nutritious, with three meals per day (breakfast, lunch, dinner). Please format each meal as follows: "Meal Type - Description - Calories: Number." For example, "Breakfast - Oatmeal with fruits - Calories: 300."`;
 
     console.log('Sending prompt to OpenAI:', prompt);
 
