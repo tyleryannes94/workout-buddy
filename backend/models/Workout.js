@@ -34,7 +34,7 @@ const workoutSchema = new Schema({
     workout_description: {
         type: String,
     },
-    user: {
+    userId: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },

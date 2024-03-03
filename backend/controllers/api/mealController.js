@@ -5,16 +5,19 @@ const { generateMealPlan } = require('../../utils/chatGPTMealPlan');
 
 exports.getAllMealsForUser = async (req, res) => {
     try {
-        const { userId } = req.params;
-        const user = await User.findById(userId).populate('meals');
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
+        const userId = req.params.userId;
+        const meals = await Meal.find({ user: userId });
+        
+        if (!meals.length) {
+            return res.status(404).json({ message: "No meals found for this user." });
         }
-        res.json(user.meals);
+
+        res.json(meals);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
+
 
 exports.getMealById = async (req, res) => {
     try {
@@ -64,9 +67,6 @@ async function createIndividualMeals(userId, generatedPlan) {
     return mealDocs;
 }
 
-
-
-
 exports.createMealPlanForUser = async (req, res) => {
     const { userId } = req.params;
     console.log("Attempting to create a meal plan for userId:", userId);
@@ -89,8 +89,10 @@ exports.createMealPlanForUser = async (req, res) => {
         const mealIds = await createIndividualMeals(userId, generatedPlan);
         console.log(`Created meals with IDs: ${mealIds.join(", ")}`);
 
-        const meals = await Meal.find({ '_id': { $in: mealIds } });
+        const meals = await Meal.find({ userId: req.params.userId });
         console.log(`Fetched ${meals.length} meals from the database.`);
+        user.meals.push(...mealIds);
+        await user.save();
 
         res.status(201).json(meals);
     } catch (error) {

@@ -17,7 +17,7 @@ exports.getWorkoutById = async (req, res) => {
 
 exports.getAllWorkoutsForUser = async (req, res) => {
     try {
-        const workouts = await Workout.find({ user: req.params.userId });
+        const workouts = await Workout.find({ userId: req.params.userId });
         res.json(workouts);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -86,6 +86,43 @@ async function createIndividualWorkouts(userId, generatedPlan) {
     return workoutDocs;
 }
 
+async function createIndividualWorkouts(userId, generatedPlan) {
+    const workoutDocs = [];
+    const days = generatedPlan.split(/Day \d+:/).filter(Boolean);
+  
+    for (const day of days) {
+      const lines = day.trim().split('\n');
+      const workoutTypeDescription = lines[0];
+      const caloriesBurnedText = lines[lines.length - 1];
+  
+      const workoutTypeMatch = workoutTypeDescription.match(/^(.+?) - (.+)$/);
+      if (!workoutTypeMatch) continue;
+  
+      const workoutType = workoutTypeMatch[1].trim();
+      const workoutDescription = workoutTypeMatch[2].trim();
+  
+      const caloriesBurnedMatch = caloriesBurnedText.match(/Estimated calories burned: (\d+)/);
+      if (!caloriesBurnedMatch) continue;
+  
+      const caloriesBurned = parseInt(caloriesBurnedMatch[1], 10);
+      const workoutInfo = lines.slice(1, -1);
+  
+      const workoutDoc = new Workout({
+        workout_type: workoutType,
+        date_created: new Date(),
+        workout_length: workoutInfo.length,
+        workout_info: workoutInfo,
+        calories_burned: caloriesBurned,
+        userId: userId,
+        workout_description: workoutDescription,
+      });
+  
+      const savedWorkout = await workoutDoc.save();
+      workoutDocs.push(savedWorkout._id);
+    }
+    return workoutDocs;
+}
+
 exports.createWorkoutPlanForUser = async (req, res) => {
     const { userId } = req.params;
   
@@ -97,6 +134,10 @@ exports.createWorkoutPlanForUser = async (req, res) => {
       if (!generatedPlan) return res.status(400).json({ message: 'Failed to generate workout plan.' });
   
       const workoutIds = await createIndividualWorkouts(userId, generatedPlan);
+      // Ensure user is updated after all workouts are created
+      await Promise.all(workoutIds.map(id => user.workouts.push(id)));
+      await user.save(); 
+
       const workouts = await Workout.find({ '_id': { $in: workoutIds } });
   
       res.status(201).json(workouts);
@@ -105,3 +146,4 @@ exports.createWorkoutPlanForUser = async (req, res) => {
       res.status(500).json({ message: 'Internal server error.' });
     }
 };
+
