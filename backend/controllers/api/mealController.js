@@ -32,8 +32,6 @@ exports.getMealById = async (req, res) => {
 async function createIndividualMeals(userId, generatedPlan) {
     console.log("Starting to create individual meals for userId:", userId);
     const mealDocs = [];
-
-    // Use a more specific pattern to match the updated meal plan format.
     const mealEntries = generatedPlan.match(/(Breakfast|Lunch|Dinner) - (.+) - Calories: (\d+)/g);
 
     if (!mealEntries) {
@@ -47,6 +45,7 @@ async function createIndividualMeals(userId, generatedPlan) {
 
         try {
             const mealDoc = new Meal({
+                mealType: mealType,
                 description: description.trim(),
                 calories: parseInt(calories, 10),
                 date_created: new Date(),

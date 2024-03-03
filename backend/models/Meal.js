@@ -5,6 +5,9 @@ const mealSchema = new Schema({
   date_logged: { 
     type: Date, 
     required: false },
+  mealType: { 
+    type: String, 
+    required: false },
   calories: { 
     type: Number, 
     required: false },
