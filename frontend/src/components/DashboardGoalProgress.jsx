@@ -2,10 +2,28 @@ import React, { useState, useEffect } from 'react';
 
 const DashboardGoalProgress = () => {
   const [workoutsCompleted, setWorkoutsCompleted] = useState(0);
-  const weeklyGoal = 5;
+  const [weeklyGoal, setWeeklyGoal] = useState(0); // Updated to be fetched
 
   useEffect(() => {
     const userId = localStorage.getItem('userId');
+
+    const fetchGoal = async () => {
+      try {
+        // Adjust the endpoint as necessary to fetch the specific workout goal
+        const response = await fetch(`/api/goals/user/${userId}`);
+        if (!response.ok) throw new Error('Failed to fetch goal');
+        const goals = await response.json();
+
+        // Assuming the server returns an array of goals, find the first workout goal
+        const workoutGoal = goals.find(goal => goal.goalType === 'workouts');
+        if (workoutGoal) {
+          setWeeklyGoal(workoutGoal.targetValue);
+        }
+      } catch (error) {
+        console.error('Error fetching goal:', error);
+      }
+    };
+
     const fetchWorkouts = async () => {
       try {
         const response = await fetch(`/api/workouts/user/${userId}`);
@@ -23,6 +41,7 @@ const DashboardGoalProgress = () => {
       }
     };
 
+    fetchGoal();
     fetchWorkouts();
   }, []);
 

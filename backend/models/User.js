@@ -37,6 +37,10 @@ const userSchema = new Schema({
         type: [String], 
         trim: true
     },
+    goals: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Goal'
+    }],
     workouts: [{
         type: Schema.Types.ObjectId,
         ref: 'Workout'
@@ -45,9 +49,9 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'WorkoutPlan'
     }],
-    bodyTrackings: [{
+    goals: [{
         type: Schema.Types.ObjectId,
-        ref: 'BodyTracking'
+        ref: 'Goal'
     }],
     meals: [{
         type: Schema.Types.ObjectId,
