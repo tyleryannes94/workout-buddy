@@ -32,7 +32,7 @@ exports.getMealById = async (req, res) => {
 async function createIndividualMeals(userId, generatedPlan) {
     console.log("Starting to create individual meals for userId:", userId);
     const mealDocs = [];
-    const mealEntries = generatedPlan.match(/(Breakfast|Lunch|Dinner) - (.+) - Calories: (\d+)/g);
+    const mealEntries = generatedPlan.match(/(Breakfast|Lunch|Dinner) - (.+) - Calories: (\d+) - (.+)/g);
 
     if (!mealEntries) {
         console.log("No meals found in the generated plan.");
@@ -40,16 +40,16 @@ async function createIndividualMeals(userId, generatedPlan) {
     }
 
     for (const entry of mealEntries) {
-        // Directly extract meal type, description, and calories using the updated pattern.
-        const [, mealType, description, calories] = entry.match(/(Breakfast|Lunch|Dinner) - (.+) - Calories: (\d+)/);
+        const [, mealType, description, calories, ingredients] = entry.match(/(Breakfast|Lunch|Dinner) - (.+) - Calories: (\d+) - (.+)/);
 
         try {
             const mealDoc = new Meal({
-                mealType: mealType,
+                mealType,
                 description: description.trim(),
                 calories: parseInt(calories, 10),
                 date_created: new Date(),
-                userId: userId,
+                userId,
+                ingredients: ingredients.replace(/^Ingredients:\s*/, '').split(', ').map(ingredient => ingredient.trim()),
             });
 
             const savedMeal = await mealDoc.save();

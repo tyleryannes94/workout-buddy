@@ -8,6 +8,9 @@ const mealSchema = new Schema({
   mealType: { 
     type: String, 
     required: false },
+  ingredients: { 
+    type: [String], 
+    required: false },
   calories: { 
     type: Number, 
     required: false },
