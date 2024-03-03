@@ -12,8 +12,6 @@ exports.getAllMealsForUser = async (req, res) => {
     }
 };
 
-
-
 exports.getMealById = async (req, res) => {
     try {
         const { mealId } = req.params;

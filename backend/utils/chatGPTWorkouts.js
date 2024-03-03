@@ -17,7 +17,7 @@ async function generateWorkoutPlan(userId) {
 
     const preferencesArray = user.workout_preferences;
     const preferencesText = preferencesArray.join(", ").replace(/, (?=[^,]*$)/, " and ");
-    const prompt = `Generate a detailed 7-day workout plan for a user interested in ${preferencesText}. Please format each day's plan with the following structure: Day X: [Workout Type] - [Workout Description]. Include estimated calories burned at the end of each day's plan.`;
+    const prompt = `Generate a detailed 7-day workout plan for a user interested in ${preferencesText} and give the exercises for each day. Please format each day's plan with the following structure: Day X: [Workout Type] - [Workout Description] - [Exercises]. Include estimated calories burned at the end of each day's plan.`;
 
     console.log('Sending prompt to OpenAI:', prompt);
 
