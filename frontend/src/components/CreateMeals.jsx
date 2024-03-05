@@ -48,9 +48,9 @@ const MealPlans = () => {
     <div>
       <h1>Meal Plans</h1>
       <button onClick={generateNewMealPlan} disabled={isLoading || isGenerating}>
-        {isGenerating ? 'Generating...' : 'Generate New Meal Plan'}
+        {isGenerating ? 'Adding more meals...' : 'Create more meals'}
       </button>
-      {isGenerating && <div>Generating new meal plan...</div>}
+      {isGenerating && <div>Generating new meals...</div>}
       {error && <div>Error: {error}</div>}
       {isLoading && !isGenerating && <div>Loading...</div>}
       {mealPlans.length > 0 ? (

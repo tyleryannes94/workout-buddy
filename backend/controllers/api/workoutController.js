@@ -67,8 +67,8 @@ async function createIndividualWorkouts(userId, generatedPlan) {
       if (!caloriesBurnedMatch) continue;
   
       const caloriesBurned = parseInt(caloriesBurnedMatch[1], 10);
-      const workoutInfo = lines.slice(1, -1).join('\n'); 
-  
+      const workoutInfo = lines.slice(1, -1).map(info => info.replace(/^\d+\.\s*/, '')).filter(info => info.trim() !== '');
+
       const workoutDoc = new Workout({
         userId,
         workout_type: workoutType,

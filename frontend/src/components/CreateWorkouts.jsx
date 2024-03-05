@@ -4,6 +4,7 @@ import WorkoutBlock from './WorkoutBlock';
 const CreateWorkouts = () => {
   const [workouts, setWorkouts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [isGenerating, setIsGenerating] = useState(false);
   const [error, setError] = useState(null);
   const userId = localStorage.getItem('userId');
 
@@ -12,8 +13,8 @@ const CreateWorkouts = () => {
   }, []);
 
   const fetchWorkouts = async () => {
-    setIsLoading(true);
-    try {
+    if (!isGenerating) setIsLoading(true); 
+      try {
       const response = await fetch(`/api/workouts/user/${userId}`);
       if (!response.ok) throw new Error('Failed to fetch workouts');
       const data = await response.json();
@@ -26,7 +27,7 @@ const CreateWorkouts = () => {
     }
   };
   const generateNewWorkoutPlan = async () => {
-    setIsLoading(true);
+    setIsGenerating(true);
     try {
       const response = await fetch(`/api/workouts/plan/${userId}`, {
         method: 'POST',
@@ -38,25 +39,33 @@ const CreateWorkouts = () => {
       console.error('Error generating new workout plan:', error);
       setError(error.message);
     } finally {
-      setIsLoading(false);
+      setIsGenerating(false);
     }
   };
 
   return (
     <div>
       <h1>Workout Plans</h1>
-      <button onClick={generateNewWorkoutPlan} disabled={isLoading}>
-        {isLoading ? 'Adding more workouts...' : 'Create more workouts'}
+      <button onClick={generateNewWorkoutPlan} disabled={isLoading || isGenerating}>
+        {isGenerating ? 'Adding more workouts...' : 'Create more workouts'}
       </button>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : error ? (
-        <div>Error: {error}</div>
-      ) : workouts.length > 0 ? (
+      {isGenerating && <div>Generating new workouts...</div>}
+      {error && <div>Error: {error}</div>}
+      {isLoading && !isGenerating && <div>Loading...</div>}
+      {workouts.length > 0 ? (
         workouts.map((workout) => (
           <WorkoutBlock key={workout._id} workout={workout} />
         ))
       ) : (
+
+      // {isLoading ? (
+      //   <div>Loading...</div>
+      // ) : error ? (
+      //   <div>Error: {error}</div>
+      // ) : workouts.length > 0 ? (
+      //   workouts.map((workout) => (
+      //     <WorkoutBlock key={workout._id} workout={workout} />
+      //   ))
         <p>No workout plans available. Try generating new ones.</p>
       )}
     </div>

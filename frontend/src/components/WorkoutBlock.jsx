@@ -1,14 +1,7 @@
 import React from 'react';
 
 function WorkoutBlock({ workout }) {
-  const parseExercises = (workoutInfo) => {
-    if (typeof workoutInfo !== 'string') {
-      return [];
-    }
-    return workoutInfo.split('- ').filter(Boolean);
-  };
-
-  const exercises = parseExercises(workout.workout_info);
+  console.log('WorkoutBlock props:', workout);
 
   return (
     <div>
@@ -16,11 +9,9 @@ function WorkoutBlock({ workout }) {
       <p>Description: {workout.workout_description}</p>
       <p>Calories Burned: {workout.calories_burned}</p>
       <p>Exercises:</p>
-      <ol>
-        {exercises.map((exercise, index) => (
-          <li key={index}>{exercise}</li>
+        {workout.workout_info.map((workout_info, index) => (
+          <li key={index}>{workout_info}</li>
         ))}
-      </ol>
     </div>
   );
 }
