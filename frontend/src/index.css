@@ -4,7 +4,7 @@
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
+  color: #A5CDFD;
   background-color: #242424;
 
   font-synthesis: none;
@@ -65,4 +65,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.yellowText {
+  color: #FFFEA8;
 }

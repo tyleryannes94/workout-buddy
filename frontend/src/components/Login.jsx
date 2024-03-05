@@ -41,6 +41,10 @@ const Login = () => {
 
     return (
         <div>
+            <div>
+                <h1 className='yellowText'>Hi, </h1>
+                <h1>Workout Buddy.</h1>
+            </div>
             <form onSubmit={handleSubmit}>
                 <input
                     type="email"
