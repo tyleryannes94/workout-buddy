@@ -42,8 +42,8 @@ const Login = () => {
     return (
         <div>
             <div>
-                <h1 className='yellowText'>Hi, </h1>
-                <h1>Workout Buddy.</h1>
+                <h1 className='customYellow'>Hi, </h1>
+                <h1 className='customSerif-bold'>Workout Buddy.</h1>
             </div>
             <form onSubmit={handleSubmit}>
                 <input
