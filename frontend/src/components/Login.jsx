@@ -68,6 +68,7 @@ const Login = () => {
                     <button type="submit">Log In</button>
                 </form>
             </div>
+            {/* OPTIONAL TODO: import icons for right arrow instead of 'sign up' */}
             <button onClick={handleSignUpRedirect}>Sign Up</button>
         </div>
     );
