@@ -41,23 +41,34 @@ const Login = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                    required
-                />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    required
-                />
-                <button type="submit">Log In</button>
-            </form>
+            <div>
+                <h1 className='customYellow'>Hi, </h1>
+                <h1 className='customSerif-bold'>Workout Buddy.</h1>
+            </div>
+            <div className="login-card">
+                <form onSubmit={handleSubmit}>
+                    <div className="input-group">
+                        <input
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                            placeholder="Email"
+                            required
+                        />
+                    </div>
+                    <div className="input-group">
+                        <input
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            placeholder="Password"
+                            required
+                        />
+                    </div>
+                    <button type="submit">Log In</button>
+                </form>
+            </div>
+            {/* OPTIONAL TODO: import icons for right arrow instead of 'sign up' */}
             <button onClick={handleSignUpRedirect}>Sign Up</button>
         </div>
     );
