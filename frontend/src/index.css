@@ -13,6 +13,9 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* used to center content */
+  justify-content: center;
 }
 /* TODO: edit anchor tags */
 a {
@@ -62,6 +65,8 @@ button:focus-visible {
   :root {
     /* color: #213547; */
     background-color: #A5CDFD;
+    /* used to center content */
+    justify-content: center;
   }
   a:hover {
     color: #213547;
