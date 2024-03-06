@@ -40,12 +40,12 @@ h1 {
 /* TODO: edit buttons */
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #FFFEA8;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -60,7 +60,7 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    color: #213547;
+    /* color: #213547; */
     background-color: #A5CDFD;
   }
   a:hover {
@@ -68,7 +68,8 @@ button:focus-visible {
   }
   /* TODO: edit buttons  */
   button {
-    background-color: #f9f9f9;
+    background-color: #FFFEA8;
+    ;
   }
 }
 
@@ -80,4 +81,20 @@ button:focus-visible {
 .customSerif-bold {
   font-family: "Noto Serif", serif;
 
+}
+
+.login-card {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px; /* Optional: Adds some spacing between the card and the buttons */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.input-group {
+  margin-bottom: 10px; /* Optional: Adds some spacing between the inputs */
 }
