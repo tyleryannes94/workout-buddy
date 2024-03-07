@@ -8,10 +8,6 @@ function SignupForm() {
     lastName: '',
     email: '',
     password: '',
-    // change from arrays to strings
-    // healthGoals: [],
-    // workoutPreferences: [],
-    // dietType: [],
     healthGoals: '',
     workoutPreferences: '',
     dietType: '',
@@ -26,21 +22,6 @@ function SignupForm() {
       [name]: value,
     }));
   };
-  // got rid of this callback fx
-  // const handleCheckboxChange = (event) => {
-  //   const { name, value, checked } = event.target;
-  //   if (checked) {
-  //     setFormData((prevFormData) => ({
-  //       ...prevFormData,
-  //       [name]: [...prevFormData[name], value],
-  //     }));
-  //   } else {
-  //     setFormData((prevFormData) => ({
-  //       ...prevFormData,
-  //       [name]: prevFormData[name].filter((item) => item !== value),
-  //     }));
-  //   }
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -79,22 +60,7 @@ function SignupForm() {
       alert('Signup failed: ' + error.message);
     }
   };
-  // got rid of this callback fx
-  // const renderCheckboxes = (category, options) => {
-  //   return options.map((option) => (
-  //     <label key={option}>
-  //       <input
-  //         type="checkbox"
-  //         name={category}
-  //         value={option}
-  //         checked={formData[category].includes(option)}
-  //         onChange={handleCheckboxChange}
-  //       />
-  //       {option}
-  //     </label>
-  //   ));
-  // };
-    // changed structure from checkboxes to drop down menus
+  
   return (
         <form id="signupForm" onSubmit={handleSubmit}>
           <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
