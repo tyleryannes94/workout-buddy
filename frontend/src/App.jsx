@@ -11,9 +11,8 @@ import Navbar from './components/Navbar';
 function App() {
   return (
     <Router>
-      <Navbar />
-      <Login />
       <Routes>
+      <Route path="/navbar" element={<Navbar />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<SignupForm />} />
       <Route path="/dashboard" element={<Dashboard />} />

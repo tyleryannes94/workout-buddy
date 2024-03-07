@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import WorkoutBlock from './WorkoutBlock';
 import MealBlock from './MealBlock';
 import DashboardGoalProgress from './DashboardGoalProgress';
+import Navbar from './Navbar';
 
 function Dashboard() {
     const [workouts, setWorkouts] = useState([]);
@@ -49,6 +50,7 @@ function Dashboard() {
 
     return (
         <div>
+            <Navbar/>
             <h2>Progress</h2>
             <DashboardGoalProgress goals={goals} />
 
