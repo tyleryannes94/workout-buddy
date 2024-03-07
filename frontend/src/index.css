@@ -108,3 +108,11 @@ button:focus-visible {
 .responsive-margin {
   margin: 10px 35px;
 }
+
+.input {
+  padding: 8px;
+  margin: 10px 35px;
+  font-size: 1.3rem;
+  border: 2px solid #C0C0C0 ;
+  border-radius: 0.5rem ;
+}

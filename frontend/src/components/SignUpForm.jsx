@@ -68,12 +68,12 @@ function SignupForm() {
       <h1 className='customYellow'>First, </h1>
       <h1 className='customSerif-bold'>a little about yourself...</h1>
       <form id='signupForm' onSubmit={handleSubmit}>
-        <input type='text' name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
-        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
-        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-        <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+        <input className='input' type='text' name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
+        <input className='input' type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
+        <input className='input' type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
+        <input className='input' type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
 
-        <div>
+        <div className='responsive-margin'>
           <h3>My Health Goal:</h3>
           <select name="healthGoals" value={formData.healthGoals} onChange={handleChange}>
             <option value="">Select...</option>
@@ -88,7 +88,7 @@ function SignupForm() {
           </select>
         </div>
 
-        <div>
+        <div className='responsive-margin'>
           <h3>Favorite Workouts:</h3>
           <select name="workoutPreferences" value={formData.workoutPreferences} onChange={handleChange}>
             <option value="">Select...</option>
@@ -105,7 +105,7 @@ function SignupForm() {
           </select>
         </div>
 
-        <div>
+        <div className='responsive-margin'>
           <h3>Diet Preferences:</h3>
           <select name="dietType" value={formData.dietType} onChange={handleChange}>
             <option value="">Select...</option>
