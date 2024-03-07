@@ -6,10 +6,12 @@ import Dashboard from './components/Dashboard';
 import CreateMeals from './components/CreateMeals';
 import CreateWorkouts from './components/CreateWorkouts';
 import Navbar from './components/Navbar';
+import Home from './components/Home';
 
 
 function App() {
   return (
+    <>
     <Router>
       <Routes>
       <Route path="/navbar" element={<Navbar />} />
@@ -18,9 +20,10 @@ function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/meals" element={<CreateMeals />} />
       <Route path="/workouts" element={<CreateWorkouts />} />
-
       </Routes>
     </Router>
+    </>
+    
   )
 }
 
