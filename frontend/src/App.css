@@ -24,7 +24,10 @@ h3 {
 
 }
 
-
+select {
+  padding: 5px;
+  
+}
 
 
 /* #root {
