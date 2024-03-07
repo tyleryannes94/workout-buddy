@@ -64,7 +64,7 @@ function SignupForm() {
   };
 
   return (
-    <div>
+    <div className='responsive-margin'>
       <h1 className='customYellow'>First, </h1>
       <h1 className='customSerif-bold'>a little about yourself...</h1>
       <form id='signupForm' onSubmit={handleSubmit}>
@@ -74,7 +74,7 @@ function SignupForm() {
         <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
 
         <div>
-          <h3>Health Goals</h3>
+          <h3>My Health Goal:</h3>
           <select name="healthGoals" value={formData.healthGoals} onChange={handleChange}>
             <option value="">Select...</option>
             <option value="lose weight">Lose Weight</option>
@@ -89,7 +89,7 @@ function SignupForm() {
         </div>
 
         <div>
-          <h3>Workout Preferences</h3>
+          <h3>Favorite Workouts:</h3>
           <select name="workoutPreferences" value={formData.workoutPreferences} onChange={handleChange}>
             <option value="">Select...</option>
             <option value="free weights">Free Weights</option>
@@ -106,7 +106,7 @@ function SignupForm() {
         </div>
 
         <div>
-          <h3>Diet Type</h3>
+          <h3>Diet Preferences:</h3>
           <select name="dietType" value={formData.dietType} onChange={handleChange}>
             <option value="">Select...</option>
             <option value="paleo">Paleo</option>

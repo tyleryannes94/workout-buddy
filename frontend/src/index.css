@@ -104,3 +104,7 @@ button:focus-visible {
 .input-group {
   margin-bottom: 10px; /* Optional: Adds some spacing between the inputs */
 }
+
+.responsive-margin {
+  margin: 10px 35px;
+}
