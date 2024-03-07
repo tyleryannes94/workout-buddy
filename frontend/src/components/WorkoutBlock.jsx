@@ -1,6 +1,22 @@
 import React from 'react';
+import { useState } from 'react';
 
 function WorkoutBlock({ workout }) {
+  const [scheduledDate, setScheduledDate] = useState('');
+  const scheduleWorkout = async () => {
+    const response = await fetch(`/api/workouts/${workout._id}`, {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ scheduled_date: scheduledDate }),
+    });
+
+    if (response.ok) {
+      console.log("Workout scheduled successfully");
+    } else {
+      console.error("Failed to schedule workout");
+    }
+  };
+
   const logWorkout = async () => {
     const response = await fetch(`/api/workouts/${workout._id}`, {
       method: 'PATCH', 
@@ -27,7 +43,13 @@ function WorkoutBlock({ workout }) {
         {workout.workout_info.map((workout_info, index) => (
           <li key={index}>{workout_info}</li>
         ))}
+       <input
+        type="date"
+        value={scheduledDate}
+        onChange={(e) => setScheduledDate(e.target.value)}
+      />
       <button onClick={logWorkout}>Log Workout</button>
+      <button onClick={scheduleWorkout}>Schedule Workout</button>
 
     </div>
   );

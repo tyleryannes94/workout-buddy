@@ -23,6 +23,10 @@ const mealSchema = new Schema({
   userId: { 
     type: Schema.Types.ObjectId, 
     ref: 'User' }, 
+  scheduled_date: {
+    type: Date, 
+    default: null, 
+},
 });
 
 const Meal = mongoose.model('Meal', mealSchema);
