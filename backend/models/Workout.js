@@ -42,6 +42,10 @@ const workoutSchema = new Schema({
         type: Date, 
         default: null, 
     },
+    scheduled_date: {
+        type: Date, 
+        default: null, 
+    },
 },
 {
     toJSON: {
