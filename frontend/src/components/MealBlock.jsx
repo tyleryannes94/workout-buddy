@@ -1,7 +1,23 @@
 import React from 'react';
 
 function MealBlock({ meal }) {
-  console.log('MealBlock props:', meal);
+  const logMeal = async () => {
+    const response = await fetch(`/api/meals/${meal._id}`, {
+      method: 'PATCH', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        date_logged: new Date(), 
+      }),
+    });
+
+    if (response.ok) {
+      console.log("Meal logged successfully");
+    } else {
+      console.error("Failed to log meal");
+    }
+  };
   return (
     <div>
       <h3>{meal.mealType}</h3>
@@ -15,6 +31,7 @@ function MealBlock({ meal }) {
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
+      <button onClick={logMeal}>Log Meal</button>
         </>
       )}
     </div>

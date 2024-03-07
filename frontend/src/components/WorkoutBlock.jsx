@@ -1,8 +1,23 @@
 import React from 'react';
 
 function WorkoutBlock({ workout }) {
-  console.log('WorkoutBlock props:', workout);
+  const logWorkout = async () => {
+    const response = await fetch(`/api/workouts/${workout._id}`, {
+      method: 'PATCH', 
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        workout_date: new Date(), 
+      }),
+    });
 
+    if (response.ok) {
+      console.log("Workout logged successfully");
+    } else {
+      console.error("Failed to log workout");
+    }
+  };
   return (
     <div>
       <h3>{workout.workout_type}</h3>
@@ -12,6 +27,8 @@ function WorkoutBlock({ workout }) {
         {workout.workout_info.map((workout_info, index) => (
           <li key={index}>{workout_info}</li>
         ))}
+      <button onClick={logWorkout}>Log Workout</button>
+
     </div>
   );
 }
