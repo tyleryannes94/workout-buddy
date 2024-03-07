@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const routes = require('./routes/index');
 const path = require('path');
 const cors = require('cors');
+const { graphqlHTTP } = require('graphql-http');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
