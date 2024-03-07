@@ -10,9 +10,17 @@
   text-align: center;
 }
 
+/* might not need */
+#dropDownMenu {
+  /* margin-bottom: auto; */
+  justify-content: left;
+}
 
+h3 {
+  margin-bottom: auto;
+  text-align: left;
 
-
+}
 
 
 

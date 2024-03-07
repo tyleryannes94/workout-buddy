@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import '../App.css';
+import '../index.css'
 
 function SignupForm() {
   const [formData, setFormData] = useState({
@@ -59,17 +60,21 @@ function SignupForm() {
       console.error('Signup failed:', error);
       alert('Signup failed: ' + error.message);
     }
+    <h1>First, a little about yourself... </h1>
   };
 
   return (
-    <form id="signupForm" onSubmit={handleSubmit}>
-      <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
-      <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
-      <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-      <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
-      
-      <div>
-        <h3>Health Goals</h3>
+    <div>
+      <h1 className='customYellow'>First, </h1>
+      <h1 className='customSerif-bold'>a little about yourself...</h1>
+      <form id='signupForm' onSubmit={handleSubmit}>
+        <input type='text' name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
+        <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
+        <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
+        <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+
+        <div>
+          <h3>Health Goals</h3>
           <select name="healthGoals" value={formData.healthGoals} onChange={handleChange}>
             <option value="">Select...</option>
             <option value="lose weight">Lose Weight</option>
@@ -81,10 +86,10 @@ function SignupForm() {
             <option value="improve diet">Improve Diet</option>
             <option value="I need it all">I Need It All</option>
           </select>
-      </div>     
-          
-      <div>
-        <h3>Workout Preferences</h3>
+        </div>
+
+        <div>
+          <h3>Workout Preferences</h3>
           <select name="workoutPreferences" value={formData.workoutPreferences} onChange={handleChange}>
             <option value="">Select...</option>
             <option value="free weights">Free Weights</option>
@@ -98,10 +103,10 @@ function SignupForm() {
             <option value="group classes">Group Classes</option>
             <option value="spin class">Spin Class</option>
           </select>
-      </div>
+        </div>
 
-      <div>
-        <h3>Diet Type</h3>
+        <div>
+          <h3>Diet Type</h3>
           <select name="dietType" value={formData.dietType} onChange={handleChange}>
             <option value="">Select...</option>
             <option value="paleo">Paleo</option>
@@ -114,10 +119,10 @@ function SignupForm() {
             <option value="high protein">High Protein</option>
             <option value="I just want to eat healthier">I Just Want to Eat Healthier</option>
           </select>
-      </div>
-
-      <button type="submit">Sign Up</button>
-    </form>
+        </div>
+        <button type="submit">Sign Up</button>
+      </form>
+    </div>
   );
 }
 
