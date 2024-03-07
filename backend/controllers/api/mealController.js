@@ -121,3 +121,27 @@ exports.deleteMeal = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+exports.createManualMealForUser = async (req, res) => {
+    const { userId } = req.params;
+    const { date_logged, mealType, calories } = req.body;
+
+    if (!userId) {
+        return res.status(404).json({ message: 'User ID is required.' });
+    }
+
+    try {
+        const newMeal = new Meal({
+            userId,
+            date_logged: new Date(date_logged),
+            mealType,
+            calories: parseInt(calories, 10),
+        });
+
+        const savedMeal = await newMeal.save();
+        res.status(201).json(savedMeal);
+    } catch (error) {
+        console.error('Error creating manual meal:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+};

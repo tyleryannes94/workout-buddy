@@ -107,3 +107,27 @@ exports.createWorkoutPlanForUser = async (req, res) => {
         res.status(500).json({ message: 'Internal server error.' });
     }
 };
+
+exports.createManualWorkoutForUser = async (req, res) => {
+    const { userId } = req.params;
+    const { workout_type, workout_date, calories_burned, workout_info } = req.body;
+
+    if (!userId) {
+        return res.status(404).json({ message: 'User ID is required.' });
+    }
+
+    try {
+        const newWorkout = new Workout({
+            userId,
+            workout_type,
+            calories_burned,
+            workout_info: workout_info,
+            workout_date: new Date(),
+        });
+        const savedWorkout = await newWorkout.save();
+        res.status(201).json(savedWorkout);
+    } catch (error) {
+        console.error('Error logging manual workout:', error);
+        res.status(500).json({ message: 'Internal server error.' });
+    }
+};
