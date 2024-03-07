@@ -8,9 +8,13 @@ function SignupForm() {
     lastName: '',
     email: '',
     password: '',
-    healthGoals: [],
-    workoutPreferences: [],
-    dietType: [],
+    // change from arrays to strings
+    // healthGoals: [],
+    // workoutPreferences: [],
+    // dietType: [],
+    healthGoals: '',
+    workoutPreferences: '',
+    dietType: '',
   });
 
   const navigate = useNavigate(); 
@@ -22,21 +26,21 @@ function SignupForm() {
       [name]: value,
     }));
   };
-
-  const handleCheckboxChange = (event) => {
-    const { name, value, checked } = event.target;
-    if (checked) {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: [...prevFormData[name], value],
-      }));
-    } else {
-      setFormData((prevFormData) => ({
-        ...prevFormData,
-        [name]: prevFormData[name].filter((item) => item !== value),
-      }));
-    }
-  };
+  // got rid of this callback fx
+  // const handleCheckboxChange = (event) => {
+  //   const { name, value, checked } = event.target;
+  //   if (checked) {
+  //     setFormData((prevFormData) => ({
+  //       ...prevFormData,
+  //       [name]: [...prevFormData[name], value],
+  //     }));
+  //   } else {
+  //     setFormData((prevFormData) => ({
+  //       ...prevFormData,
+  //       [name]: prevFormData[name].filter((item) => item !== value),
+  //     }));
+  //   }
+  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -75,40 +79,73 @@ function SignupForm() {
       alert('Signup failed: ' + error.message);
     }
   };
-
-  const renderCheckboxes = (category, options) => {
-    return options.map((option) => (
-      <label key={option}>
-        <input
-          type="checkbox"
-          name={category}
-          value={option}
-          checked={formData[category].includes(option)}
-          onChange={handleCheckboxChange}
-        />
-        {option}
-      </label>
-    ));
-  };
-
+  // got rid of this callback fx
+  // const renderCheckboxes = (category, options) => {
+  //   return options.map((option) => (
+  //     <label key={option}>
+  //       <input
+  //         type="checkbox"
+  //         name={category}
+  //         value={option}
+  //         checked={formData[category].includes(option)}
+  //         onChange={handleCheckboxChange}
+  //       />
+  //       {option}
+  //     </label>
+  //   ));
+  // };
+    // changed structure from checkboxes to drop down menus
   return (
         <form id="signupForm" onSubmit={handleSubmit}>
           <input type="text" name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
-          <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
-          <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
-          <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
-          <div>
-            <h3>Health Goals</h3>
-            {renderCheckboxes('healthGoals', ['lose weight', 'gain muscle', 'general wellness', 'improve strength', 'improve running time', 'improve flexibility', 'improve diet', 'I need it all'])}
-          </div>
-          <div>
-            <h3>Workout Preferences</h3>
-            {renderCheckboxes('workoutPreferences', ['free weights', 'hypertrophy', 'strength', 'running', 'cardio machines', 'swimming', 'yoga', 'HIIT', 'group classes', 'spin class'])}
-          </div>
-          <div>
-            <h3>Diet Type</h3>
-            {renderCheckboxes('dietType', ['paleo', 'keto', 'vegan', 'vegetarian', 'high calorie', 'low calorie', 'low carb', 'high protein', 'I just want to eat healthier'])}
-          </div>
+      <input type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
+      <input type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
+      <input type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />
+      <div>
+        <h3>Health Goals</h3>
+        <select name="healthGoals" value={formData.healthGoals} onChange={handleChange}>
+          <option value="">Select...</option>
+          <option value="lose weight">Lose Weight</option>
+          <option value="gain muscle">Gain Muscle</option>
+          <option value="general wellness">General Wellness</option>
+          <option value="improve strength">Improve Strength</option>
+          <option value="improve running time">Improve Running Time</option>
+          <option value="improve flexibility">Improve Flexibility</option>
+          <option value="improve diet">Improve Diet</option>
+          <option value="I need it all">I Need It All</option>
+        </select>
+      </div>
+      <div>
+        <h3>Workout Preferences</h3>
+        <select name="workoutPreferences" value={formData.workoutPreferences} onChange={handleChange}>
+          <option value="">Select...</option>
+          <option value="free weights">Free Weights</option>
+          <option value="hypertrophy">Hypertrophy</option>
+          <option value="strength">Strength</option>
+          <option value="running">Running</option>
+          <option value="cardio machines">Cardio Machines</option>
+          <option value="swimming">Swimming</option>
+          <option value="yoga">Yoga</option>
+          <option value="HIIT">HIIT</option>
+          <option value="group classes">Group Classes</option>
+          <option value="spin class">Spin Class</option>
+        </select>
+      </div>
+      <div>
+        <h3>Diet Type</h3>
+        <select name="dietType" value={formData.dietType} onChange={handleChange}>
+          <option value="">Select...</option>
+          <option value="paleo">Paleo</option>
+          <option value="keto">Keto</option>
+          <option value="vegan">Vegan</option>
+          <option value="vegetarian">Vegetarian</option>
+          <option value="high calorie">High Calorie</option>
+          <option value="low calorie">Low Calorie</option>
+          <option value="low carb">Low Carb</option>
+          <option value="high protein">High Protein</option>
+          <option value="I just want to eat healthier">I Just Want to Eat Healthier</option>
+        </select>
+      </div>
           <button type="submit">Sign Up</button>
         </form>
       );
