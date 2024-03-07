@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import WorkoutBlock from './WorkoutBlock'; 
+import Navbar from './Navbar';
 
 const CreateWorkouts = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -45,6 +46,7 @@ const CreateWorkouts = () => {
 
   return (
     <div>
+        <Navbar/>
       <h1>Workout Plans</h1>
       <button onClick={generateNewWorkoutPlan} disabled={isLoading || isGenerating}>
         {isGenerating ? 'Adding more workouts...' : 'Create more workouts'}

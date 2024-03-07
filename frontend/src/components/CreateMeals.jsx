@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import MealBlock from './MealBlock';
+import Navbar from './Navbar';
 
 const MealPlans = () => {
   const [mealPlans, setMealPlans] = useState([]);
@@ -46,6 +47,7 @@ const MealPlans = () => {
 
   return (
     <div>
+      <Navbar/>
       <h1>Meal Plans</h1>
       <button onClick={generateNewMealPlan} disabled={isLoading || isGenerating}>
         {isGenerating ? 'Adding more meals...' : 'Create more meals'}
