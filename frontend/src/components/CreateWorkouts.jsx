@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import WorkoutBlock from './WorkoutBlock'; 
 import Navbar from './Navbar';
+import ManualWorkout from './ManualWorkout';
 
 const CreateWorkouts = () => {
   const [workouts, setWorkouts] = useState([]);
@@ -48,6 +49,7 @@ const CreateWorkouts = () => {
     <div>
         <Navbar/>
       <h1>Workout Plans</h1>
+      <ManualWorkout/>
       <button onClick={generateNewWorkoutPlan} disabled={isLoading || isGenerating}>
         {isGenerating ? 'Adding more workouts...' : 'Create more workouts'}
       </button>
@@ -59,15 +61,6 @@ const CreateWorkouts = () => {
           <WorkoutBlock key={workout._id} workout={workout} />
         ))
       ) : (
-
-      // {isLoading ? (
-      //   <div>Loading...</div>
-      // ) : error ? (
-      //   <div>Error: {error}</div>
-      // ) : workouts.length > 0 ? (
-      //   workouts.map((workout) => (
-      //     <WorkoutBlock key={workout._id} workout={workout} />
-      //   ))
         <p>No workout plans available. Try generating new ones.</p>
       )}
     </div>

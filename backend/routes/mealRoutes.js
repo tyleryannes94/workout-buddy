@@ -7,5 +7,6 @@ router.get('/:mealId', mealController.getMealById);
 router.post('/plan/:userId', mealController.createMealPlanForUser);
 router.patch('/:mealId', mealController.updateMeal);
 router.delete('/:mealId', mealController.deleteMeal);
+router.post('/meal/:userId', mealController.createManualMealForUser);
 
 module.exports = router;

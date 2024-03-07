@@ -8,5 +8,7 @@ router.get('/user/:userId', workoutController.getAllWorkoutsForUser);
 router.delete('/:id', workoutController.deleteWorkout);
 router.patch('/:id', workoutController.updateWorkout);
 router.post('/plan/:userId', workoutController.createWorkoutPlanForUser);
+router.post('/workout/:userId', workoutController.createManualWorkoutForUser);
+
 
 module.exports = router;
