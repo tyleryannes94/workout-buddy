@@ -4,26 +4,23 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <nav className='navbar'>
-      <ul >
+      <ul>
         <li>
-          {/* add link  */}
-          <a href="#">Dash</a>
+          <Link to="/dashboard">Dash</Link>
         </li>
         <li>
-          {/* add link  */}
-          <a href="#">Friends</a>
+          {/* Assuming you will have a route for friends in the future */}
+          <Link to="/friends">Friends</Link>
         </li>
         <li>
-          {/* add link  */}
-          <a href="#">Analytics</a>
+          {/* Assuming you will have a route for analytics in the future */}
+          <Link to="/analytics">Analytics</Link>
         </li>
         <li>
-          {/* add link  */}
-          <a href="#">Meal Plan</a>
+          <Link to="/meals">Meal Plan</Link>
         </li>
         <li>
-          {/* add link  */}
-          <a href="#">Workouts</a>
+          <Link to="/workouts">Workouts</Link>
         </li>
       </ul>
     </nav>
