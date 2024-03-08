@@ -68,7 +68,7 @@ function SignupForm() {
       <h1 className='customYellow'>First, </h1>
       <h1 className='customSerif-bold'>a little about yourself...</h1>
       <form id='signupForm' onSubmit={handleSubmit}>
-        <input className='input' type='text' name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
+        <input id='firstOfInputs' className='input' type='text' name="firstName" value={formData.firstName} onChange={handleChange} placeholder="First Name" />
         <input className='input' type="text" name="lastName" value={formData.lastName} onChange={handleChange} placeholder="Last Name" />
         <input className='input' type="email" name="email" value={formData.email} onChange={handleChange} placeholder="Email" />
         <input className='input' type="password" name="password" value={formData.password} onChange={handleChange} placeholder="Password" />

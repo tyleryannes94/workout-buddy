@@ -26,9 +26,13 @@ h3 {
 
 select {
   padding: 5px;
-  
+  border: 2px solid #C0C0C0 ;
+  border-radius: 0.5rem ;
 }
 
+#firstOfInputs {
+  margin-top: 1.5rem;
+}
 
 /* #root {
   max-width: 1280px;
