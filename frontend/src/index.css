@@ -43,18 +43,19 @@ h1 {
 /* TODO: edit buttons */
 button {
   border-radius: 8px;
-  border: 2px solid transparent;
-  padding: 0.6em 1.2em;
+  border: 2px solid #C0C0C0;
+  margin: 20px 70px;
+  padding: 0.5em 2.5em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
   background-color: #FFFEA8;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: background-color 0.25s;
 }
 /* TODO: edit buttons */
 button:hover {
-  border-color: #213547;
+  background-color: #A5CDFD;
 }
 button:focus,
 button:focus-visible {
@@ -102,4 +103,16 @@ button:focus-visible {
 
 .input-group {
   margin-bottom: 10px; /* Optional: Adds some spacing between the inputs */
+}
+
+.responsive-margin {
+  margin: 10px 35px;
+}
+
+.input {
+  padding: 8px;
+  margin: 10px 35px;
+  font-size: 1.3rem;
+  border: 2px solid #C0C0C0 ;
+  border-radius: 0.5rem ;
 }

@@ -40,7 +40,7 @@ const Login = () => {
     };
 
     return (
-        <div>
+        <div className='responsive-margin'>
             <div>
                 <h1 className='customYellow'>Hi, </h1>
                 <h1 className='customSerif-bold'>Workout Buddy.</h1>

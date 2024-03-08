@@ -1,21 +1,39 @@
+/* duped from .logincard from index.css */
 #signupForm {
+  font-size: 1.5rem;
   background-color: white;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; /* Optional: Adds some spacing between the card and the buttons */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  /* margin: 35px; */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: left;
+  margin-bottom: 20px;
 }
 
+/* might not need */
+#dropDownMenu {
+  /* margin-bottom: auto; */
+  justify-content: left;
+}
 
+h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  text-align: left;
 
+}
 
+select {
+  padding: 5px;
+  border: 2px solid #C0C0C0 ;
+  border-radius: 0.5rem ;
+}
 
-
-
+#firstOfInputs {
+  margin-top: 1.5rem;
+}
 
 /* #root {
   max-width: 1280px;
