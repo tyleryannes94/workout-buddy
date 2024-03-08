@@ -118,10 +118,11 @@ button:focus-visible {
 }
 
 .navbar {
-  position:absolute;
-  top: 0;
-  left: 8%;
-  width: 100%;
+  position: fixed;
+  top: 20px;
+  left: 17%;
+  /* right: 15%;
+  width: 100%; */
   /* transform: translateX(-50%); */
   display: flex;
   justify-content: space-between;
