@@ -118,11 +118,17 @@ button:focus-visible {
 }
 
 .navbar {
+  position:absolute;
+  top: 0;
+  left: 8%;
+  width: 100%;
+  /* transform: translateX(-50%); */
   display: flex;
   justify-content: space-between;
   align-items: center;
   /* background-color: gray;  */
   padding: 1rem;
+  z-index: 1000;
 }
 
 .navbar ul {
