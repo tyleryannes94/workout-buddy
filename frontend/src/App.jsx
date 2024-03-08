@@ -7,6 +7,7 @@ import CreateMeals from './components/CreateMeals';
 import CreateWorkouts from './components/CreateWorkouts';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
+import Friends from './components/Friends'; 
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/meals" element={<CreateMeals />} />
       <Route path="/workouts" element={<CreateWorkouts />} />
+      <Route path="/friends" element={<Friends />} /> 
       </Routes>
     </Router>
     </>

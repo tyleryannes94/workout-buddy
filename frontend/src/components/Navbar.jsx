@@ -9,7 +9,7 @@ const Navbar = () => {
           <Link to="/dashboard" className="hover:text-gray-300">Dashboard</Link>
         </li>
         <li>
-          <Link to="/leaderboards" className="hover:text-gray-300">Leaderboards</Link>
+          <Link to="/friends" className="hover:text-gray-300">Friends</Link>
         </li>
         <li>
           <Link to="/analytics" className="hover:text-gray-300">Analytics</Link>
