@@ -116,3 +116,41 @@ button:focus-visible {
   border: 2px solid #C0C0C0 ;
   border-radius: 0.5rem ;
 }
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* background-color: gray;  */
+  padding: 1rem;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  display: inline;
+  margin-right: 0.75rem;
+}
+
+.navbar li:last-child {
+  margin-right: 0;
+}
+
+.navbar a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background-color: #eee; /* light gray color */
+  border-color: #ccc; /* gray color */
+  color: #0053ba; /* blue color */
+}

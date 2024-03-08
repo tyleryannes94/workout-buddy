@@ -3,22 +3,27 @@ import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
-    <nav className="bg-gray-800 text-white p-4">
-      <ul className="flex space-x-4">
+    <nav className='navbar'>
+      <ul >
         <li>
-          <Link to="/dashboard" className="hover:text-gray-300">Dashboard</Link>
+          {/* add link  */}
+          <a href="#">Dash</a>
         </li>
         <li>
-          <Link to="/leaderboards" className="hover:text-gray-300">Leaderboards</Link>
+          {/* add link  */}
+          <a href="#">Friends</a>
         </li>
         <li>
-          <Link to="/analytics" className="hover:text-gray-300">Analytics</Link>
+          {/* add link  */}
+          <a href="#">Analytics</a>
         </li>
         <li>
-          <Link to="/meals" className="hover:text-gray-300">Meal Plan</Link>
+          {/* add link  */}
+          <a href="#">Meal Plan</a>
         </li>
         <li>
-          <Link to="/workouts" className="hover:text-gray-300">Workout Plans</Link>
+          {/* add link  */}
+          <a href="#">Workouts</a>
         </li>
       </ul>
     </nav>
