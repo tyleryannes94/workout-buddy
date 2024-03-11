@@ -86,7 +86,7 @@ button:focus-visible {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; /* optional: add some spacing between the card and the buttons */
+  margin-bottom: 20px; /* optional todo: add some spacing between the card and the buttons */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -94,7 +94,7 @@ button:focus-visible {
 }
 
 .input-group {
-  margin-bottom: 10px; /* optional: Adds some spacing between the inputs */
+  margin-bottom: 10px; /* optional todo: Adds some spacing between the inputs */
 }
 
 .responsive-margin {
@@ -114,13 +114,10 @@ button:focus-visible {
   position: fixed;
   top: 0;
   left: 0;
- /* right: 0; */
   width: 100%;
-  /* transform: translateX(-50%); */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: gray;  */
   padding: 1rem;
   z-index: 1000;
 }
@@ -150,7 +147,7 @@ button:focus-visible {
 }
 
 .navbar a:hover {
-  background-color: #FFFEA8; /* light gray color */
-  border-color: #ccc; /* gray color */
-  color: black; /* blue color */
+  background-color: #FFFEA8;
+  border-color: #ccc; 
+  color: black; 
 }

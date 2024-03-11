@@ -36,10 +36,19 @@ select {
 }
 
 .component-cards {
-  background-color: #fff;
+  background-color: #FFFEA8;
   padding: 1rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
+}
+
+/*styling the link within a card*/
+.component-cards a {
+  color: black;
+}
+
+.component-cards a:hover {
+  color: #C0C0C0;
 }
 
 .card-title {

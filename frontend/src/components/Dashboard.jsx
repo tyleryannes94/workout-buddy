@@ -4,6 +4,7 @@ import WorkoutBlock from './WorkoutBlock';
 import MealBlock from './MealBlock';
 import DashboardGoalProgress from './DashboardGoalProgress';
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
     const [workouts, setWorkouts] = useState([]);
@@ -52,14 +53,25 @@ function Dashboard() {
     return (
         <div>
             <Navbar/>
+            <h2>Progress</h2>
+            <DashboardGoalProgress goals={goals} />
+
             {/* contains all component cards */}
             <div className='card-grid'>
-              <Cards title="Progress">
-                <DashboardGoalProgress goals={goals} />
+                <Link to='/workouts'>
+                   <Cards title="Workout Suggestions">
+                        {/* {workouts.map(workout => <WorkoutBlock key={workout._id} workout={workout} /> )} */}
+                        {/* <WorkoutBlock /> */}
+                    </Cards> 
+                </Link>
+              
+            
+              <Cards title="Create A Meal">
+                
               </Cards>
 
-              <Cards title="Workout Suggestions">
-                {workouts.map(workout => <WorkoutBlock key={workout._id} workout={workout} /> )}
+              <Cards title="Create A Workout">
+                
               </Cards>
 
             </div>
