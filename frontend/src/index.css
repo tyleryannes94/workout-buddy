@@ -3,9 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  /* color-scheme: light dark; */
-  /* color: #A5CDFD; */
-
   /* blue figma color */
   background-color: #A5CDFD;
 
@@ -16,6 +13,9 @@
 
   /* used to center content */
   justify-content: center;
+
+   /* Add padding-top to create space for the fixed navbar */
+   padding-top: 60px; /* Adjust the value as needed */
 }
 /* TODO: edit anchor tags */
 a {
@@ -118,11 +118,12 @@ button:focus-visible {
 }
 
 .navbar {
+  background-color: #A5CDFD;
   position: fixed;
-  top: 20px;
-  left: 17%;
-  /* right: 15%;
-  width: 100%; */
+  top: 0;
+  left: 0;
+ /* right: 0; */
+  width: 100%;
   /* transform: translateX(-50%); */
   display: flex;
   justify-content: space-between;
