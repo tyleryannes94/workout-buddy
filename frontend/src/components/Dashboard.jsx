@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import Cards from './Cards';
 import WorkoutBlock from './WorkoutBlock';
 import MealBlock from './MealBlock';
 import DashboardGoalProgress from './DashboardGoalProgress';
 import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 
 function Dashboard() {
     const [workouts, setWorkouts] = useState([]);
@@ -54,13 +56,41 @@ function Dashboard() {
             <h2>Progress</h2>
             <DashboardGoalProgress goals={goals} />
 
-            <h2>Workout Suggestions</h2>
-            {workouts.map(workout => <WorkoutBlock key={workout._id} workout={workout} />)}
+            {/* contains all component cards */}
+            <div className='card-grid'>
+                <Link to='/workouts'>
+                   <Cards title="Workout Suggestions">
+                        {/* {workouts.map(workout => <WorkoutBlock key={workout._id} workout={workout} /> )} */}
+                        {/* <WorkoutBlock /> */}
+                    </Cards> 
+                </Link>
+              
+            
+              <Cards title="Create A Meal">
+                
+              </Cards>
 
-            <h2>Meals For Your Diet</h2>
-            {meals.map(meal => <MealBlock key={meal._id} meal={meal} />)}
+              <Cards title="Create A Workout">
+                
+              </Cards>
+
+            </div>
+
+            
         </div>
     );
 }
 
 export default Dashboard;
+
+
+
+{/* <h2>Progress</h2>
+            <DashboardGoalProgress goals={goals} />
+
+            <h2>Workout Suggestions</h2> */}
+            {/* <WorkoutBlock /> */}
+            {/* {workouts.map(workout => <WorkoutBlock key={workout._id} workout={workout} />)} */}
+
+            {/* <h2>Meals For Your Diet</h2>
+            {meals.map(meal => <MealBlock key={meal._id} meal={meal} />)} */}
