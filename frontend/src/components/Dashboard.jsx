@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Cards from './Cards';
 import WorkoutBlock from './WorkoutBlock';
 import MealBlock from './MealBlock';
 import DashboardGoalProgress from './DashboardGoalProgress';
@@ -51,16 +52,33 @@ function Dashboard() {
     return (
         <div>
             <Navbar/>
-            <h2>Progress</h2>
-            <DashboardGoalProgress goals={goals} />
+            {/* contains all component cards */}
+            <div className='card-grid'>
+              <Cards title="Progress">
+                <DashboardGoalProgress goals={goals} />
+              </Cards>
 
-            <h2>Workout Suggestions</h2>
-            {workouts.map(workout => <WorkoutBlock key={workout._id} workout={workout} />)}
+              <Cards title="Workout Suggestions">
+                {workouts.map(workout => <WorkoutBlock key={workout._id} workout={workout} /> )}
+              </Cards>
 
-            <h2>Meals For Your Diet</h2>
-            {meals.map(meal => <MealBlock key={meal._id} meal={meal} />)}
+            </div>
+
+            
         </div>
     );
 }
 
 export default Dashboard;
+
+
+
+{/* <h2>Progress</h2>
+            <DashboardGoalProgress goals={goals} />
+
+            <h2>Workout Suggestions</h2> */}
+            {/* <WorkoutBlock /> */}
+            {/* {workouts.map(workout => <WorkoutBlock key={workout._id} workout={workout} />)} */}
+
+            {/* <h2>Meals For Your Diet</h2>
+            {meals.map(meal => <MealBlock key={meal._id} meal={meal} />)} */}

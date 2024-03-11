@@ -2,20 +2,14 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
-  /* blue figma color */
   background-color: #A5CDFD;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  /* used to center content */
   justify-content: center;
-
-   /* Add padding-top to create space for the fixed navbar */
-   padding-top: 60px; /* Adjust the value as needed */
+  /* Add padding-top to create space for the fixed navbar */
+  padding-top: 60px;
 }
 /* TODO: edit anchor tags */
 a {
@@ -23,7 +17,7 @@ a {
   color: #646cff;
   text-decoration: inherit;
 }
-/* TODO: edit anchor tags */
+/* optional TODO: edit anchor tags */
 a:hover {
   color: #535bf2;
 }
@@ -40,7 +34,7 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-/* TODO: edit buttons */
+/* optional TODO: edit buttons */
 button {
   border-radius: 8px;
   border: 2px solid #C0C0C0;
@@ -53,7 +47,7 @@ button {
   cursor: pointer;
   transition: background-color 0.25s;
 }
-/* TODO: edit buttons */
+/* optional TODO: edit buttons */
 button:hover {
   background-color: #A5CDFD;
 }
@@ -64,15 +58,13 @@ button:focus-visible {
 
 @media (prefers-color-scheme: light) {
   :root {
-    /* color: #213547; */
     background-color: #A5CDFD;
-    /* used to center content */
     justify-content: center;
   }
   a:hover {
     color: #213547;
   }
-  /* TODO: edit buttons  */
+  /* optional TODO: edit buttons  */
   button {
     background-color: #FFFEA8;
     ;
@@ -83,7 +75,7 @@ button:focus-visible {
   color: #FFFEA8;
 }
 
-/* TODO: add bold weight */
+/* optional TODO: add bold weight */
 .customSerif-bold {
   font-family: "Noto Serif", serif;
 
@@ -94,7 +86,7 @@ button:focus-visible {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; /* Optional: Adds some spacing between the card and the buttons */
+  margin-bottom: 20px; /* optional: add some spacing between the card and the buttons */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -102,7 +94,7 @@ button:focus-visible {
 }
 
 .input-group {
-  margin-bottom: 10px; /* Optional: Adds some spacing between the inputs */
+  margin-bottom: 10px; /* optional: Adds some spacing between the inputs */
 }
 
 .responsive-margin {
@@ -158,7 +150,7 @@ button:focus-visible {
 }
 
 .navbar a:hover {
-  background-color: #eee; /* light gray color */
+  background-color: #FFFEA8; /* light gray color */
   border-color: #ccc; /* gray color */
-  color: #0053ba; /* blue color */
+  color: black; /* blue color */
 }
