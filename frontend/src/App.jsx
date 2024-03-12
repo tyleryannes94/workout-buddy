@@ -8,6 +8,9 @@ import CreateWorkouts from './components/CreateWorkouts';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Analytics from './components/Analytics'; // Import Analytics component
+import CalendarView from './components/CalendarView';
+
+
 
 function App() {
   return (
@@ -21,6 +24,8 @@ function App() {
         <Route path="/meals" element={<CreateMeals />} />
         <Route path="/workouts" element={<CreateWorkouts />} />
         <Route path="/analytics" element={<Analytics />} /> {/* Add route for Analytics */}
+        <Route path="/calendar" element={<CalendarView />} /> 
+
       </Routes>
     </Router>
   );
