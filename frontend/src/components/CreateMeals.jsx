@@ -50,7 +50,7 @@ const MealPlans = () => {
   return (
     <div>
       <Navbar/>
-      <h1>Meal Plans</h1>
+      <h1 className='customSerif-bold'>Meal Plans</h1>
       <ManualMeal/>
       <button onClick={generateNewMealPlan} disabled={isLoading || isGenerating}>
         {isGenerating ? 'Adding more meals...' : 'Create more meals'}

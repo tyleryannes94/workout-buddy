@@ -49,10 +49,11 @@ const CreateWorkouts = () => {
   return (
     <div>
         <Navbar/>
-      <h1>Workout Plans</h1>
+      <h1 className='customSerif-bold'>Workout Plans</h1>
+      <h3>Manually log in a workout</h3>
       <ManualWorkout/>
       <button onClick={generateNewWorkoutPlan} disabled={isLoading || isGenerating}>
-        {isGenerating ? 'Adding more workouts...' : 'Create more workouts'}
+        {isGenerating ? 'Adding more workouts...' : 'Need some gym inspo?'}
       </button>
       <div className="workout-card">
         <WorkoutCard workouts={workouts} isGenerating={isGenerating} error={error} isLoading={isLoading}/>

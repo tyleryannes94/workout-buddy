@@ -32,7 +32,7 @@ function ManualWorkout() {
 
   return (
     <form onSubmit={handleSubmit}>
-  <input
+      <input
         name="date_created"
         value={workoutData.date_created}
         onChange={handleChange}
@@ -54,9 +54,9 @@ function ManualWorkout() {
         name="calories_burned"
         value={workoutData.calories_burned}
         onChange={handleChange}
-        placeholder="Log your calories burned"
+        placeholder="Calories burned"
       />
-      <button type="submit">Submit Workout</button>
+      <button type="submit">Submit</button>
     </form>
   );
 }
