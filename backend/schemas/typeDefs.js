@@ -43,6 +43,10 @@ const typeDefs = gql`
     goals: [Goal]
     workouts: [Workout]
     meals: [Meal]
+    meals_logged: Int
+    workouts_completed: Int
+    calories_consumed: Int
+    calories_burned: Int
   }
 
   type Friend {

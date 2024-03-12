@@ -5,7 +5,6 @@ const User = require('../../models/User');
 const JWT_SECRET = process.env.JWT_SECRET;
 
 exports.createUser = async (req, res) => {
-
     try {
         console.log(req.body); 
         const {
@@ -28,6 +27,10 @@ exports.createUser = async (req, res) => {
             health_goals,
             workout_preferences,
             diet_type,
+            meals_logged: 0, // Initialize meals_logged to 0
+            workouts_completed: 0, // Initialize workouts_completed to 0
+            calories_consumed: 0, // Initialize calories_consumed to 0
+            calories_burned: 0, // Initialize calories_burned to 0
         });
 
         await newUser.save();

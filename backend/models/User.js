@@ -49,14 +49,26 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'WorkoutPlan'
     }],
-    goals: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Goal'
-    }],
     meals: [{
         type: Schema.Types.ObjectId,
         ref: 'Meal'
     }],
+    meals_logged: {
+        type: Number,
+        default: 0
+    },
+    workouts_completed: {
+        type: Number,
+        default: 0
+    },
+    calories_consumed: {
+        type: Number,
+        default: 0
+    },
+    calories_burned: {
+        type: Number,
+        default: 0
+    }
 },
 {
     toJSON: {
@@ -80,4 +92,3 @@ userSchema.methods.checkPassword = function(candidatePassword) {
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
-
