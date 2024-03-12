@@ -53,7 +53,7 @@ function Dashboard() {
     return (
         <div>
             <Navbar/>
-            <h2>Progress</h2>
+            <h1>Welcome, Buddy. </h1>
             <DashboardGoalProgress goals={goals} />
 
             {/* contains all component cards */}

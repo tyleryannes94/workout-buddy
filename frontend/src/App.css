@@ -66,3 +66,11 @@ select {
   /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
   gap: 2rem;
 }
+
+.workout-card {
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
