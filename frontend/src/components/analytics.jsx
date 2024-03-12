@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
+import AnalyticsCard from './AnalyticsCard';
 
 const Analytics = () => {
   const [totalWorkouts, setTotalWorkouts] = useState(0);
@@ -30,17 +31,17 @@ const Analytics = () => {
   return (
     <div>
       <Navbar />
-      <h2>Analytics Page</h2>
-      {isLoading ? (
-        <div>Loading...</div>
-      ) : (
-        <div>
-          <p>Total Workouts Logged: {totalWorkouts}</p>
-          <p>Total Meals Logged: {totalMeals}</p>
-          <p>Total Calories Eaten: {totalCaloriesEaten}</p>
-          <p>Total Calories Burned: {totalCaloriesBurned}</p>
-        </div>
-      )}
+      <h2 className='customSerif-bold'>Analytics Page</h2>
+      <div className='analytics-card'>
+        <AnalyticsCard
+          totalWorkouts={totalWorkouts}
+          totalMeals={totalMeals}
+          totalCaloriesEaten={totalCaloriesEaten}
+          totalCaloriesBurned={totalCaloriesBurned}
+          isLoading={isLoading}
+          error={error} />
+      </div>
+      
     </div>
   );
 };
