@@ -78,6 +78,7 @@ button:focus-visible {
 /* optional TODO: add bold weight */
 .customSerif-bold {
   font-family: "Noto Serif", serif;
+  font-weight: bold;
 
 }
 
@@ -94,7 +95,7 @@ button:focus-visible {
 }
 
 .input-group {
-  margin-bottom: 10px; /* optional todo: Adds some spacing between the inputs */
+  margin-bottom: 10px; /* optional todo: add some spacing between the inputs */
 }
 
 .responsive-margin {

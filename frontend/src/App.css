@@ -93,6 +93,26 @@ select {
   border: 2px solid #C0C0C0 ;
   border-radius: 8px;
   padding: 20px;
-  /* margin-top: 1rem;
-  margin-bottom: 1rem; */
+}
+
+.friend-card {
+  background-color: #fff;
+  padding: 20px 3rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-bottom: 20px;
+  width: auto;
+}
+
+.search-container {
+  display: flex;
+  align-items: stretch; 
+}
+
+.search-container input {
+  margin-right: 1rem; /* between input and button */
+}
+
+.search-button {
+  margin: auto;
 }
