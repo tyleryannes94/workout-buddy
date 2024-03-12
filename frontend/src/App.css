@@ -82,3 +82,8 @@ select {
   border-radius: 8px;
   margin-bottom: 20px;
 }
+
+/*did not work on manual workout form fields*/
+.workout-form {
+  padding-top: 10px;
+}
