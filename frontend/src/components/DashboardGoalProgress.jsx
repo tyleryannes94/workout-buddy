@@ -26,15 +26,15 @@ const DashboardGoalProgress = () => {
   return (
     <div>
       <h2>Total Workout Progress</h2>
-      <div style={{ width: '100%', backgroundColor: '#e0e0de', borderRadius: '5px' }}>
+      <div style={{ width: '100%', backgroundColor: 'white', borderRadius: '5px' }}>
         <div
           style={{
             height: '24px',
             width: `${progressPercentage}%`,
-            backgroundColor: progressPercentage === 100 ? '#4caf50' : '#2196f3',
+            backgroundColor: progressPercentage === 100 ? '#4caf50' : '#D6FBBB',
             borderRadius: '5px',
             textAlign: 'center',
-            color: 'white',
+            color: 'black',
             lineHeight: '24px',
           }}
         >
