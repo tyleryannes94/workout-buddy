@@ -87,3 +87,12 @@ select {
 .workout-form {
   padding-top: 10px;
 }
+
+.calendar-container {
+  background-color: white;
+  border: 2px solid #C0C0C0 ;
+  border-radius: 8px;
+  padding: 20px;
+  /* margin-top: 1rem;
+  margin-bottom: 1rem; */
+}

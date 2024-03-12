@@ -108,18 +108,22 @@ const CalendarView = () => {
   return (
     <>
       <Navbar/>
-      <Calendar
+      <div className='calendar-container'>
+      <h1>Calendar View</h1>
+       <Calendar
         localizer={localizer}
         events={events}
         startAccessor="start"
         endAccessor="end"
         eventPropGetter={eventStyleGetter}
-        style={{ height: '100vh' }}
+        style={{ height: '60vh' }}
         onSelectEvent={event => {
           setSelectedEvent(event.resource);
           setIsModalOpen(true);
         }}
-      />
+      /> 
+      </div>
+      
       {isModalOpen && <ModalComponent />}
     </>
   );
