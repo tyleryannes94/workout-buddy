@@ -31,14 +31,23 @@ function Friend() {
         setWorkouts(data);
     };
 
-    const sendFriendRequest = async (recipientId) => {
-        await fetch('/api/friends/send-request', {
+  const sendFriendRequest = async (recipientId) => {
+    try {
+        const response = await fetch('/api/friends/send-request', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requesterId: currentUserId, recipientId }),
         });
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
+        alert('Friend request sent successfully');
         // Optionally refetch data to update UI
-    };
+    } catch (error) {
+        console.error("Failed to send friend request:", error);
+        alert('Failed to send friend request');
+    }
+};
 
     const acceptFriendRequest = async (requestId) => {
         await fetch('/api/friends/accept-request', {

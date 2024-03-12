@@ -12,8 +12,8 @@ exports.sendFriendRequest = async (req, res) => {
             return res.status(400).send('Friend request already sent.');
         }
         const newFriendRequest = new Friend({
-            requester: mongoose.Types.ObjectId(requesterId),
-            recipient: mongoose.Types.ObjectId(recipientId),
+            requester: requesterId,
+            recipient: recipientId,
             status: 'pending',
         });
         await newFriendRequest.save();
