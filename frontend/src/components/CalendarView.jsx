@@ -34,7 +34,7 @@ const CalendarView = () => {
           end: new Date(meal.scheduled_date || meal.date_logged),
           allDay: true,
           resource: meal,
-          color: meal.scheduled_date ? 'blue' : 'green', 
+          color: meal.scheduled_date ? '#ABE397' : '#C7B7D7', 
         }));
 
         const workoutEvents = workoutsData.map((workout) => ({
@@ -43,7 +43,7 @@ const CalendarView = () => {
           end: new Date(workout.scheduled_date || workout.workout_date),
           allDay: true,
           resource: workout,
-          color: workout.scheduled_date ? 'red' : 'orange', 
+          color: workout.scheduled_date ? '#FDA9A5' : '#FBD274', 
         }));
 
         setEvents([...mealEvents, ...workoutEvents]);
@@ -59,10 +59,10 @@ const CalendarView = () => {
     var backgroundColor = event.color || 'blue';
     var style = {
       backgroundColor: backgroundColor,
-      borderRadius: '0px',
+      borderRadius: '3px',
       opacity: 0.8,
       color: 'white',
-      border: '0px',
+      border: '2px',
       display: 'block',
     };
     return {
@@ -71,7 +71,7 @@ const CalendarView = () => {
   };
   
   const ModalComponent = () => (
-    <div className="modal" style={{ position: 'fixed', top: '20%', left: '30%', backgroundColor: 'white', padding: '20px', zIndex: 1000 }}>
+    <div className="modal" style={{ position: 'fixed', top: '20%', left: '30%', border: '2px solid #C0C0C0', borderRadius: '4px', backgroundColor: 'white', padding: '20px', zIndex: 1000 }}>
       <div className="modal-content">
         <span className="close" onClick={() => setIsModalOpen(false)}>&times;</span>
         {selectedEvent && selectedEvent.mealType ? (
@@ -108,18 +108,22 @@ const CalendarView = () => {
   return (
     <>
       <Navbar/>
-      <Calendar
+      <div className='calendar-container'>
+      <h1>Calendar View</h1>
+       <Calendar
         localizer={localizer}
         events={events}
         startAccessor="start"
         endAccessor="end"
         eventPropGetter={eventStyleGetter}
-        style={{ height: '100vh' }}
+        style={{ height: '60vh' }}
         onSelectEvent={event => {
           setSelectedEvent(event.resource);
           setIsModalOpen(true);
         }}
-      />
+      /> 
+      </div>
+      
       {isModalOpen && <ModalComponent />}
     </>
   );

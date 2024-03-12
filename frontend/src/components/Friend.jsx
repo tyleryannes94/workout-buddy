@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './Navbar';
+import FriendCard from './FriendCard';
 
 function Friend() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -78,41 +79,18 @@ const acceptFriendRequest = async (requestId) => {
 
     return (
         <div>
-        <Navbar/>
-            <input
-                type="text"
-                placeholder="Search users by name or email"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <button onClick={searchUsers}>Search</button>
-            
-            {users.map(user => (
-                <div key={user._id}>
-                    {user.first_name} {user.last_name} - {user.email}
-                    <button onClick={() => sendFriendRequest(user._id)}>Add Friend</button>
-                </div>
-            ))}
-
-            <h2>Pending Requests</h2>
-            {pendingRequests.map(request => (
-                <div key={request._id}>
-                    From: {request.requester.email}
-                    <button onClick={() => acceptFriendRequest(request._id)}>Accept</button>
-                </div>
-            ))}
-            <h2>Friend Workouts</h2>
-            {workouts
-            .filter(workout => workout.workout_date != null) 
-            .map((workout, index) => (
-                <div key={index}>
-                    <h3>{workout.userId.first_name}'s Logged Workouts</h3>
-                    <p>Type: {workout.workout_type}</p>
-                    <p>Date: {workout.workout_date}</p>
-                    <p>Calories Burned: {workout.calories_burned}</p>
-                </div>
-            ))}
-          
+            <Navbar/>
+            <h1 className='customSerif-bold'>Friends</h1>
+            <div className='friend-card'>
+                <FriendCard 
+                    searchTerm={searchTerm}
+                    users={users}
+                    pendingRequests={pendingRequests}
+                    workouts={workouts}
+                    searchUsers={searchUsers}
+                    sendFriendRequest={sendFriendRequest}
+                    acceptFriendRequest={acceptFriendRequest}/>
+            </div>
         </div>
     );
 }

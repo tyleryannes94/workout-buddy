@@ -53,7 +53,7 @@ function Dashboard() {
     return (
         <div>
             <Navbar/>
-            <h1>Welcome, Buddy. </h1>
+            <h1 className='customSerif-bold'>Welcome, Buddy. </h1>
             <DashboardGoalProgress goals={goals} />
 
             {/* contains all component cards */}

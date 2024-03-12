@@ -78,6 +78,7 @@ button:focus-visible {
 /* optional TODO: add bold weight */
 .customSerif-bold {
   font-family: "Noto Serif", serif;
+  font-weight: bold;
 
 }
 
@@ -94,7 +95,7 @@ button:focus-visible {
 }
 
 .input-group {
-  margin-bottom: 10px; /* optional todo: Adds some spacing between the inputs */
+  margin-bottom: 10px; /* optional todo: add some spacing between the inputs */
 }
 
 .responsive-margin {
@@ -140,14 +141,15 @@ button:focus-visible {
 .navbar a {
   display: inline-block;
   padding: 0.5rem 1rem;
-  color: #fff;
-  border: 1px solid #fff;
-  border-radius: 4px;
+  color: black;
+  border: 2px solid #C0C0C0;
+  border-radius: 5px;
   text-decoration: none;
+  background-color: #FFFEA8;
 }
 
 .navbar a:hover {
-  background-color: #FFFEA8;
+  background-color: #fff;
   border-color: #ccc; 
   color: black; 
 }

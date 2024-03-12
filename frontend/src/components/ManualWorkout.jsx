@@ -36,7 +36,7 @@ function ManualWorkout() {
         name="date_created"
         value={workoutData.date_created}
         onChange={handleChange}
-        placeholder="Workout Date"
+        placeholder="Date"
       />
        <input
         name="workout_type"
@@ -48,13 +48,13 @@ function ManualWorkout() {
         name="workout_info"
         value={workoutData.info}
         onChange={handleChange}
-        placeholder="Log your exercise(s)"
+        placeholder="Exercise(s)"
       />
        <input
         name="calories_burned"
         value={workoutData.calories_burned}
         onChange={handleChange}
-        placeholder="Calories burned"
+        placeholder="Calories Burned"
       />
       <button type="submit">Submit</button>
     </form>
