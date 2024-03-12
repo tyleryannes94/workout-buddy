@@ -80,15 +80,16 @@ const acceptFriendRequest = async (requestId) => {
     return (
         <div>
             <Navbar/>
+            <h1 className='customSerif-bold'>Friends</h1>
             <div className='friend-card'>
                 <FriendCard 
-                searchTerm={searchTerm}
-                users={users}
-                pendingRequests={pendingRequests}
-                workouts={workouts}
-                searchUsers={searchUsers}
-                sendFriendRequest={sendFriendRequest}
-                acceptFriendRequest={acceptFriendRequest}/>
+                    searchTerm={searchTerm}
+                    users={users}
+                    pendingRequests={pendingRequests}
+                    workouts={workouts}
+                    searchUsers={searchUsers}
+                    sendFriendRequest={sendFriendRequest}
+                    acceptFriendRequest={acceptFriendRequest}/>
             </div>
         </div>
     );
