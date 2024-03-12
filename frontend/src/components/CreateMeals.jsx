@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import MealBlock from './MealBlock';
 import Navbar from './Navbar';
 import ManualMeal from './ManualMeal';
+import MealCard from './MealCard';
 
 const MealPlans = () => {
   const [mealPlans, setMealPlans] = useState([]);
@@ -54,18 +55,23 @@ const MealPlans = () => {
       <button onClick={generateNewMealPlan} disabled={isLoading || isGenerating}>
         {isGenerating ? 'Adding more meals...' : 'Create more meals'}
       </button>
-      {isGenerating && <div>Generating new meals...</div>}
-      {error && <div>Error: {error}</div>}
-      {isLoading && !isGenerating && <div>Loading...</div>}
-      {mealPlans.length > 0 ? (
-        mealPlans.map((meal) => (
-          <MealBlock key={meal._id} meal={meal} />
-        ))
-      ) : (
-        <p>No meal plans available. Try generating new ones.</p>
-      )}
+      <div className="workout-cards">
+        <MealCard mealPlans={mealPlans} isGenerating={isGenerating} error={error} isLoading={isLoading}/>
+      </div>
     </div>
   );
 };
 
 export default MealPlans;
+
+
+// {isGenerating && <div>Generating new meals...</div>}
+//       {error && <div>Error: {error}</div>}
+//       {isLoading && !isGenerating && <div>Loading...</div>}
+//       {mealPlans.length > 0 ? (
+//         mealPlans.map((meal) => (
+//           <MealBlock key={meal._id} meal={meal} />
+//         ))
+//       ) : (
+//         <p>No meal plans available. Try generating new ones.</p>
+//       )}
