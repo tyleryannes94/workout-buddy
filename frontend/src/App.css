@@ -37,18 +37,20 @@ select {
 
 .component-cards {
   background-color: #FFFEA8;
-  padding: 1rem;
+  padding: 5rem;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 0.5rem;
+  border-color: #C0C0C0;
+  transition: background-color 0.3s;
 }
 
-/*styling the link within a card*/
+/*pretty sure this doesnt do anyting*/
 .component-cards a {
   color: black;
 }
 
-.component-cards a:hover {
-  color: #C0C0C0;
+.component-cards:hover {
+  background-color: #ffff;
 }
 
 .card-title {
@@ -62,5 +64,5 @@ select {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); */
-  gap: 1rem;
+  gap: 2rem;
 }
