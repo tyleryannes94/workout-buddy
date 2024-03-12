@@ -9,6 +9,7 @@ import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Analytics from './components/Analytics'; // Import Analytics component
 import CalendarView from './components/CalendarView';
+import Friend from './components/Friend';
 
 
 
@@ -25,7 +26,7 @@ function App() {
         <Route path="/workouts" element={<CreateWorkouts />} />
         <Route path="/analytics" element={<Analytics />} /> {/* Add route for Analytics */}
         <Route path="/calendar" element={<CalendarView />} /> 
-
+        <Route path="/friends" element={<Friend />} /> 
       </Routes>
     </Router>
   );
