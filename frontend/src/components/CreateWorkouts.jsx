@@ -54,7 +54,7 @@ const CreateWorkouts = () => {
       <button onClick={generateNewWorkoutPlan} disabled={isLoading || isGenerating}>
         {isGenerating ? 'Adding more workouts...' : 'Create more workouts'}
       </button>
-      <div className="workout-cards">
+      <div className="workout-card">
         <WorkoutCard workouts={workouts} isGenerating={isGenerating} error={error} isLoading={isLoading}/>
       </div>
       
