@@ -140,14 +140,15 @@ button:focus-visible {
 .navbar a {
   display: inline-block;
   padding: 0.5rem 1rem;
-  color: #fff;
-  border: 1px solid #fff;
+  color: black;
+  border: 2px solid #C0C0C0;
   border-radius: 4px;
   text-decoration: none;
+  background-color: #FFFEA8;
 }
 
 .navbar a:hover {
-  background-color: #FFFEA8;
+  background-color: #A5CDFD;
   border-color: #ccc; 
   color: black; 
 }
