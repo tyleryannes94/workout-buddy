@@ -26,9 +26,17 @@ function Friend() {
     };
 
     const fetchWorkouts = async () => {
-        const response = await fetch(`/api/friends/workouts/friends?userId=${currentUserId}`);
-        const data = await response.json();
-        setWorkouts(data);
+        // Make sure to include error handling and check for a valid response
+        try {
+            const response = await fetch(`/api/friends/workouts/friends?userId=${currentUserId}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch workouts');
+            }
+            const data = await response.json();
+            setWorkouts(data);
+        } catch (error) {
+            console.error("Error fetching workouts:", error);
+        }
     };
 
   const sendFriendRequest = async (recipientId) => {
@@ -49,14 +57,23 @@ function Friend() {
     }
 };
 
-    const acceptFriendRequest = async (requestId) => {
-        await fetch('/api/friends/accept-request', {
+const acceptFriendRequest = async (requestId) => {
+    try {
+        const response = await fetch('/api/friends/accept-request', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requestId }),
         });
+        if (!response.ok) {
+            throw new Error(`Error: ${response.statusText}`);
+        }
         fetchPendingRequests();
-    };
+        fetchWorkouts();
+    } catch (error) {
+        console.error("Failed to accept friend request:", error);
+        alert('Failed to accept friend request');
+    }
+};
 
     return (
         <div>
@@ -82,14 +99,16 @@ function Friend() {
                     <button onClick={() => acceptFriendRequest(request._id)}>Accept</button>
                 </div>
             ))}
-
             <h2>Friend Workouts</h2>
-            {workouts.map(workout => (
-                <div key={workout._id}>
-                    <h3>{workout.user.first_name}'s Workouts</h3>
-                    {/* Iterate through workout details */}
+            {workouts.map((workout, index) => (
+                <div key={index}>
+                    <h3>{workout.userId.first_name}'s Workouts</h3>
+                    <p>Type: {workout.workout_type}</p>
+                    <p>Date: {workout.workout_date}</p>
+                    <p>Calories Burned: {workout.calories_burned}</p>
                 </div>
             ))}
+          
         </div>
     );
 }

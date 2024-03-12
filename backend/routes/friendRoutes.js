@@ -10,3 +10,4 @@ router.get('/friend-requests/pending', friendController.fetchPendingRequests);
 router.get('/workouts/friends', friendController.fetchWorkouts);
 
 module.exports = router;
+
