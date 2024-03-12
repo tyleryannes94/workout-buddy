@@ -59,21 +59,20 @@ function Dashboard() {
             {/* contains all component cards */}
             <div className='card-grid'>
                 <Link to='/workouts'>
-                   <Cards title="Workout Suggestions">
-                        {/* {workouts.map(workout => <WorkoutBlock key={workout._id} workout={workout} /> )} */}
-                        {/* <WorkoutBlock /> */}
-                    </Cards> 
+                   <Cards title="Workout Plans"></Cards> 
                 </Link>
               
-            
-              <Cards title="Create A Meal">
-                
-              </Cards>
+                <Link to='/meals'>
+                   <Cards title="Meal Plans"></Cards> 
+                </Link>
 
-              <Cards title="Create A Workout">
-                
-              </Cards>
+                <Link to=''>
+                   <Cards title="Log A Meal"></Cards> 
+                </Link>
 
+                <Link to=''>
+                   <Cards title="Log A Workout"></Cards> 
+                </Link>
             </div>
 
             
@@ -82,15 +81,3 @@ function Dashboard() {
 }
 
 export default Dashboard;
-
-
-
-{/* <h2>Progress</h2>
-            <DashboardGoalProgress goals={goals} />
-
-            <h2>Workout Suggestions</h2> */}
-            {/* <WorkoutBlock /> */}
-            {/* {workouts.map(workout => <WorkoutBlock key={workout._id} workout={workout} />)} */}
-
-            {/* <h2>Meals For Your Diet</h2>
-            {meals.map(meal => <MealBlock key={meal._id} meal={meal} />)} */}
