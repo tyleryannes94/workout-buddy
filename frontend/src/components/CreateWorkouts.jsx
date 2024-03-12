@@ -50,7 +50,7 @@ const CreateWorkouts = () => {
     <div>
         <Navbar/>
       <h1 className='customSerif-bold'>Workout Plans</h1>
-      <h3>Manually log in a workout</h3>
+      <h3>Log your workout</h3>
       <ManualWorkout/>
       <button onClick={generateNewWorkoutPlan} disabled={isLoading || isGenerating}>
         {isGenerating ? 'Adding more workouts...' : 'Need some gym inspo?'}

@@ -51,6 +51,7 @@ const MealPlans = () => {
     <div>
       <Navbar/>
       <h1 className='customSerif-bold'>Meal Plans</h1>
+      <h3>Log your meal</h3>
       <ManualMeal/>
       <button onClick={generateNewMealPlan} disabled={isLoading || isGenerating}>
         {isGenerating ? 'Adding more meals...' : 'Create more meals'}

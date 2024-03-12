@@ -36,7 +36,7 @@ function ManualMeal() {
         name="date_logged"
         value={mealData.date_logged}
         onChange={handleChange}
-        placeholder="When did you eat your meal?"
+        placeholder="Date"
       />
     <input
         name="mealType"
@@ -48,7 +48,7 @@ function ManualMeal() {
         name="calories"
         value={mealData.calories}
         onChange={handleChange}
-        placeholder="Log the meal's calories"
+        placeholder="Total Calories"
     />     
     <button type="submit">Submit Meal</button>
     </form>
