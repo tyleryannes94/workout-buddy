@@ -49,13 +49,6 @@ function SignupForm() {
       }
       console.log('Signup successful', signupData);
 
-      if (signupData.userId) {
-        localStorage.setItem('userId', signupData.userId); 
-        navigate('/dashboard');
-      } else {
-        console.error('User ID not provided in signup response');
-        alert('An error occurred. Please try again later.');
-      }
     } catch (error) {
       console.error('Signup failed:', error);
       alert('Signup failed: ' + error.message);

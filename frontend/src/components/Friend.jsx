@@ -102,9 +102,11 @@ const acceptFriendRequest = async (requestId) => {
                 </div>
             ))}
             <h2>Friend Workouts</h2>
-            {workouts.map((workout, index) => (
+            {workouts
+            .filter(workout => workout.workout_date != null) 
+            .map((workout, index) => (
                 <div key={index}>
-                    <h3>{workout.userId.first_name}'s Workouts</h3>
+                    <h3>{workout.userId.first_name}'s Logged Workouts</h3>
                     <p>Type: {workout.workout_type}</p>
                     <p>Date: {workout.workout_date}</p>
                     <p>Calories Burned: {workout.calories_burned}</p>
