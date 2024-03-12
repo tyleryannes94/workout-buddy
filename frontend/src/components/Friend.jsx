@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Navbar from './Navbar';
 
 function Friend() {
     const [searchTerm, setSearchTerm] = useState('');
@@ -77,6 +78,7 @@ const acceptFriendRequest = async (requestId) => {
 
     return (
         <div>
+        <Navbar/>
             <input
                 type="text"
                 placeholder="Search users by name or email"
