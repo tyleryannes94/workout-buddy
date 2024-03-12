@@ -48,9 +48,9 @@ function WorkoutBlock({ workout }) {
         value={scheduledDate}
         onChange={(e) => setScheduledDate(e.target.value)}
       />
-      <button onClick={logWorkout}>Log Workout</button>
       <button onClick={scheduleWorkout}>Schedule Workout</button>
-
+      <button onClick={logWorkout}>Log Workout</button>
+    
     </div>
   );
 }
