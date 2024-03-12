@@ -54,7 +54,7 @@ const CreateWorkouts = () => {
       <button onClick={generateNewWorkoutPlan} disabled={isLoading || isGenerating}>
         {isGenerating ? 'Adding more workouts...' : 'Create more workouts'}
       </button>
-      <div className="workout-cards">
+      <div className="workout-card">
         <WorkoutCard workouts={workouts} isGenerating={isGenerating} error={error} isLoading={isLoading}/>
       </div>
       
@@ -63,15 +63,3 @@ const CreateWorkouts = () => {
 };
 
 export default CreateWorkouts;
-
-
-{/* {isGenerating && <div>Generating new workouts...</div>}
-      {error && <div>Error: {error}</div>}
-      {isLoading && !isGenerating && <div>Loading...</div>}
-      {workouts.length > 0 ? (
-        workouts.map((workout) => (
-          <WorkoutBlock key={workout._id} workout={workout} />
-        ))
-      ) : (
-        <p>No workout plans available. Try generating new ones.</p>
-      )} */}
