@@ -29,7 +29,7 @@ const server = new ApolloServer({
 
 async function startApolloServer() {
   await server.start();
-  app.use(cors()); //should this be removed?
+  // app.use(cors()); //should this be removed?
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
   app.use('/', routes);
