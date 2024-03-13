@@ -4,7 +4,7 @@
   "description": "This is a workout app",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "node backend/server.js",
     "develop": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
     "postinstall": "cd backend && npm install && cd ../frontend && npm install",
     "seed": "cd backend && npm run seed",
