@@ -13,7 +13,7 @@ function Dashboard() {
         <div>
             <Navbar/>
             <h1 className='customSerif-bold'>Welcome, Buddy. </h1>
-            <DashboardGoalProgress goals={goals} />
+            <DashboardGoalProgress  />
 
             {/* contains all component cards */}
             <div className='card-grid'>
