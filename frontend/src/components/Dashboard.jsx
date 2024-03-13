@@ -7,48 +7,7 @@ import Navbar from './Navbar';
 import { Link } from 'react-router-dom';
 
 function Dashboard() {
-    const [workouts, setWorkouts] = useState([]);
-    const [meals, setMeals] = useState([]);
-    const [goals, setGoals] = useState([]); 
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    const userId = localStorage.getItem('userId');
-
-    useEffect(() => {
-        async function fetchData() {
-            setIsLoading(true);
-            try {
-                const goalResponse = await fetch(`/api/goals/user/${userId}`);
-                const goalData = await goalResponse.json();
-                setGoals(goalData.slice(-3));
-
-                const workoutsResponse = await fetch(`/api/workouts/user/${userId}`);
-                const workoutsData = await workoutsResponse.json();
-                setWorkouts(workoutsData.slice(-3));
-
-                const mealsResponse = await fetch(`/api/meals/user/${userId}`);
-                const mealsData = await mealsResponse.json();
-                setMeals(mealsData.slice(-3));
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setIsLoading(false);
-            }
-        }
-
-        if (userId) {
-            fetchData();
-        }
-    }, [userId]); 
-
-    if (isLoading) {
-        return <div>Loading...</div>;
-    }
-
-    if (error) {
-        return <div>Error: {error}</div>;
-    }
+    
 
     return (
         <div>
