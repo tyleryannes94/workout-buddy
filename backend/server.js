@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 
 const corsOptions = {
-  origin: 'https://workout-buddy-hlc1.onrender.com', 
+  origin: 'https://workout-buddy-2.onrender.com', 
   optionsSuccessStatus: 200 
 };
 
