@@ -25,12 +25,12 @@ function Dashboard() {
                 <Cards title="Meal Plans"></Cards> 
                 </Link>
 
-                <Link to='/log-meal' className="hover-special">
-                <Cards title="Log A Meal"></Cards> 
+                <Link to='/calendar' className="hover-special">
+                <Cards title="Calendar View"></Cards> 
                 </Link>
 
-                <Link to='/log-workout' className="hover-special">
-                <Cards title="Log A Workout"></Cards> 
+                <Link to='/friends' className="hover-special">
+                <Cards title="View Friends"></Cards> 
                 </Link>
             </div>
 
