@@ -4,7 +4,9 @@
   "description": "This is a workout app ",
   "main": "npm start",
   "scripts": {
-    "test": "node server.js"
+    "test": "node server.js",
+    "start": "node server.js",
+  "build": "react-scripts build"
   },
   "repository": {
     "type": "git",
