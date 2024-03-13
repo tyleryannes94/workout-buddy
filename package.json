@@ -1,11 +1,13 @@
 {
   "name": "workout-buddy",
   "version": "1.0.0",
-  "description": "This is a workout app ",
-  "main": "npm start",
+  "description": "This is a workout app",
   "scripts": {
-    "test": "node server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cd frontend && npm install && npm run build",
+    "build:backend": "cd backend && npm install && npm run start",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
