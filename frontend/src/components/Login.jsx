@@ -17,14 +17,12 @@ const Login = () => {
                 body: JSON.stringify({ email, password }),
             });
             if (!response.ok) {
-                console.error('Login failed with status:', response.status);
-                alert('Login failed. Please check your credentials and try again.');
+                const errorText = await response.text(); 
+                console.error('Login failed:', errorText);
+                alert(`Login failed: ${errorText}`);
                 return;
             }
-            const contentType = response.headers.get('content-type');
-            if (!contentType || !contentType.includes('application/json')) {
-                throw new TypeError("No JSON!");
-            }
+            
             const data = await response.json();
             console.log('Login successful', data);
     
