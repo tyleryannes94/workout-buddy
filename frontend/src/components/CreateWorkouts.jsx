@@ -50,11 +50,14 @@ const CreateWorkouts = () => {
     <div>
         <Navbar/>
       <h1 className='customSerif-bold'>Workout Plans</h1>
-      <h3>Log your workout</h3>
-      <ManualWorkout/>
+      {/* <h3>Log your workout</h3> */}
+      <div className="buttons-container">
       <button onClick={generateNewWorkoutPlan} disabled={isLoading || isGenerating}>
         {isGenerating ? 'Adding more workouts...' : 'Need some gym inspo?'}
       </button>
+      <ManualWorkout/>
+      </div>
+
       <div className="workout-card">
         <WorkoutCard workouts={workouts} isGenerating={isGenerating} error={error} isLoading={isLoading}/>
       </div>

@@ -34,6 +34,11 @@ a:hover {
   margin-bottom: 30px;
 }
 
+.buttons-container {
+  display: flex;
+  justify-content: space-around; 
+}
+
 body {
   margin: 0;
   display: flex;
