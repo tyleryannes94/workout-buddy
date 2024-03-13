@@ -4,23 +4,18 @@
   "description": "This is a workout app",
   "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js --ignore client",
-    "develop": "concurrently \"cd backend && npm run watch\" \"cd frontend && npm run dev\"",
-    "install": "cd backend && npm i && cd ../frontend && npm i",
+    "start": "node server/server.js",
+    "develop": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
+    "postinstall": "cd backend && npm install && cd ../frontend && npm install",
     "seed": "cd backend && npm run seed",
     "build": "cd frontend && npm run build",
-  "render-build":"npm install && npm run build"
+    "render-build": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tyleryannes94/workout-buddy.git"
   },
-  "keywords": [
-    "workout",
-    "chatgpt",
-    "social",
-    "proof"
-  ],
+  "keywords": ["workout", "chatgpt", "social", "proof"],
   "author": "Picante Programmers",
   "license": "MIT",
   "bugs": {
