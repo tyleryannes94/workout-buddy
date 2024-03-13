@@ -170,3 +170,60 @@ button:focus-visible {
   border-color: #ccc; 
   color: black; 
 }
+
+@media (max-width: 390px) {
+  .navbar {
+    padding: 0.5rem;
+  }
+
+  .navbar a, .navbar li {
+    padding: 0.3rem 0.6rem;
+    margin-right: 0.3rem;
+    font-size: 0.8rem;
+  }
+
+  .login-card {
+    max-width: 90%; 
+    margin: 20px auto; 
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2); 
+    border-radius: 10px; 
+  }
+
+  .login-card, .responsive-margin, .input, .buttons-container, .border-accent {
+    width: 95%;
+    margin: 10px auto;
+  }
+
+  h1, .customSerif-bold, .customYellow {
+    font-size: 2rem;
+  }
+
+  button {
+    margin: 10px 0; 
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .card-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .hover-special {
+    margin: 0 auto; 
+    text-align: center; 
+    width: auto; 
+  }
+
+  .hover-special, .login-card {
+    width: 85%; 
+  }
+}
+
+  a:active, button:active {
+    background-color: #FFFEA8; 
+    color: black;
+  }
