@@ -8,8 +8,9 @@
     "develop": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
     "postinstall": "cd backend && npm install && cd ../frontend && npm install",
     "seed": "cd backend && npm run seed",
-    "build-frontend": "cd frontend && npm install && npm run build",
-    "render-build": "npm run build"
+    "install": "cd backend && npm i && npm start",
+    "build": "cd frontend && npm install && npm run build",
+    "render-build":"npm install && npm run build"
   },
   "repository": {
     "type": "git",
