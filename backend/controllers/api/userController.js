@@ -45,25 +45,27 @@ exports.loginUser = async (req, res) => {
     try {
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(404).json({ error: true, message: "User not found" });
+            return res.status(404).json({ errors: [{ user: "not found" }] });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(400).json({ error: true, message: "Password is incorrect" });
+            return res.status(400).json({ errors: [{ password: "incorrect" }] });
         }
 
-        const access_token = jwt.sign({ _id: user._id }, JWT_SECRET, { expiresIn: '3600s' });
-
+        const access_token = jwt.sign(
+            { email: user.email, _id: user._id },
+            JWT_SECRET, 
+            { expiresIn: '3600s' }
+        );
         res.status(200).json({
             success: true,
-            message: "Login successful",
             token: "Bearer " + access_token,
-            userId: user._id 
+            user: user._id
         });
     } catch (error) {
         console.error('Login error:', error);
-        res.status(500).json({ error: true, message: 'Internal server error.' });
+        res.status(500).json({ errors: error });
     }
 };
 
