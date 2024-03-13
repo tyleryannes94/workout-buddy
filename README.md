@@ -36,8 +36,8 @@ To run the app:
 - Have a high-quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
 ## Mock-Up
-![Login](image-1.png)
-![Dash](image.png)
+![Login](image.png)
+![Dashboard](image-1.png)
 
 ## Deployment
 Our project is deployed on Render. You can access the app with this link: https://workout-buddy-2.onrender.com/
