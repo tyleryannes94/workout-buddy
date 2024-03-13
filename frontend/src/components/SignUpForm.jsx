@@ -47,8 +47,9 @@ function SignupForm() {
         throw new Error('Signup failed');
       }
 
-      const signupData = await signupResponse.json();
-      if (signupData.error) {
+      const text = await signupResponse.text(); 
+      const signupData = text ? JSON.parse(text) : {}; 
+        if (signupData.error) {
         throw new Error(signupData.message);
       }
       console.log('Signup successful', signupData);
