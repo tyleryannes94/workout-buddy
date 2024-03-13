@@ -47,14 +47,14 @@ function MealBlock({ meal }) {
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
-      <input
-        type="date"
-        value={scheduledDate}
-        onChange={(e) => setScheduledDate(e.target.value)}
-        placeholder="Schedule meal"
-      />
-      <button onClick={logMeal}>Log Meal</button>
-      <button onClick={scheduleMeal}>Schedule Meal</button>
+          <input
+            type="date"
+            value={scheduledDate}
+            onChange={(e) => setScheduledDate(e.target.value)}
+            placeholder="Schedule meal"
+          />
+          <button onClick={scheduleMeal}>Schedule Meal</button>
+          <button onClick={logMeal}>Log Meal</button>
         </>
       )}
     </div>
