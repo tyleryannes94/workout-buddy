@@ -16,21 +16,17 @@ const Login = () => {
                 },
                 body: JSON.stringify({ email, password }),
             });
-            if (!response.ok) {
-                const errorText = await response.text(); 
-                console.error('Login failed:', errorText);
-                alert(`Login failed: ${errorText}`);
-                return;
-            }
-            
-            const data = await response.json();
-            console.log('Login successful', data);
+            if (response.ok) {
+                const data = await response.json(); 
+                console.log('Login successful', data);
     
-            if (data.user) {
-                localStorage.setItem('userId', data.user);
-                navigate('/dashboard');
+                if (data.user) {
+                    localStorage.setItem('userId', data.user); 
+                }
+    
+                navigate('/dashboard'); 
             } else {
-                console.error('Login failed: User ID not returned');
+                console.error('Login failed');
                 alert('Login failed. Please check your credentials and try again.');
             }
         } catch (error) {
