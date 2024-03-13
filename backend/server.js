@@ -13,7 +13,12 @@ const cors = require('cors');
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(cors()); 
+const corsOptions = {
+  origin: 'https://workout-buddy-hlc1.onrender.com', 
+  optionsSuccessStatus: 200 
+};
+
+app.use(cors(corsOptions));
 
 const server = new ApolloServer({
   typeDefs,
@@ -24,11 +29,11 @@ const server = new ApolloServer({
 
 async function startApolloServer() {
   await server.start();
-  
+  app.use(cors()); //should this be removed?
   app.use(express.urlencoded({ extended: false }));
   app.use(express.json());
   app.use('/', routes);
-  app.use(cors());
+
   
   app.use('/graphql', expressMiddleware(server));
   
