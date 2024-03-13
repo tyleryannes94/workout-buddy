@@ -9,13 +9,11 @@ const Navbar = () => {
           <Link to="/dashboard">Dash</Link>
         </li>
         <li>
-          {/* Assuming you will have a route for friends in the future */}
           <Link to="/friends">Friends</Link>
         </li>
-        <li>
-          {/* Assuming you will have a route for analytics in the future */}
+        {/* <li>      this will remain here for future development
           <Link to="/analytics">Analytics</Link>
-        </li>
+        </li> */}
         <li>
           <Link to="/meals">Meal Plan</Link>
         </li>
