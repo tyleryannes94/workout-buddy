@@ -18,11 +18,12 @@ exports.createUser = async (req, res) => {
             diet_type,
         } = req.body;
 
-        const hashedPassword = password; 
+        const salt = await bcrypt.genSalt(10);
+        const hashedPassword = await bcrypt.hash(password, salt);
 
         const newUser = new User({
             email,
-            password,
+            password: hashedPassword,
             first_name,
             last_name,
             health_goals,

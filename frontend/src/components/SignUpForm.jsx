@@ -43,11 +43,17 @@ function SignupForm() {
         body: JSON.stringify(formattedData),
       });
 
+      if (!signupResponse.ok) {
+        throw new Error('Signup failed');
+      }
+
       const signupData = await signupResponse.json();
       if (signupData.error) {
         throw new Error(signupData.message);
       }
       console.log('Signup successful', signupData);
+      localStorage.setItem('userId', signupData.userId);
+      navigate('/dashboard');
 
     } catch (error) {
       console.error('Signup failed:', error);
