@@ -45,7 +45,9 @@ const Login = () => {
                 <h1 className='customYellow'>Hi, </h1>
                 <h1 className='customSerif-bold'>Workout Buddy.</h1>
             </div>
+            
             <div className="login-card">
+            <h2>Login</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="input-group">
                         <input
@@ -66,10 +68,14 @@ const Login = () => {
                         />
                     </div>
                     <button type="submit">Log In</button>
+                    <div></div>
+        
+                    <p>Don't have an account? <a href="#" class="hover-special" onClick={(e) => { e.preventDefault(); handleSignUpRedirect(); }}>Sign Up</a></p>
+                    
                 </form>
             </div>
             {/* OPTIONAL TODO: import icons for right arrow instead of 'sign up' */}
-            <button onClick={handleSignUpRedirect}>Sign Up</button>
+           
         </div>
     );
 };

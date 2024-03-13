@@ -58,20 +58,20 @@ function Dashboard() {
 
             {/* contains all component cards */}
             <div className='card-grid'>
-                <Link to='/workouts'>
-                   <Cards title="Workout Plans"></Cards> 
+                <Link to='/workouts' className="hover-special">
+                <Cards title="Workout Plans"></Cards> 
                 </Link>
-              
-                <Link to='/meals'>
-                   <Cards title="Meal Plans"></Cards> 
-                </Link>
-
-                <Link to=''>
-                   <Cards title="Log A Meal"></Cards> 
+            
+                <Link to='/meals' className="hover-special">
+                <Cards title="Meal Plans"></Cards> 
                 </Link>
 
-                <Link to=''>
-                   <Cards title="Log A Workout"></Cards> 
+                <Link to='/log-meal' className="hover-special">
+                <Cards title="Log A Meal"></Cards> 
+                </Link>
+
+                <Link to='/log-workout' className="hover-special">
+                <Cards title="Log A Workout"></Cards> 
                 </Link>
             </div>
 
