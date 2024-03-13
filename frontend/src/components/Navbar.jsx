@@ -11,9 +11,6 @@ const Navbar = () => {
         <li>
           <Link to="/friends">Friends</Link>
         </li>
-        {/* <li>      this will remain here for future development
-          <Link to="/analytics">Analytics</Link>
-        </li> */}
         <li>
           <Link to="/meals">Meal Plan</Link>
         </li>
