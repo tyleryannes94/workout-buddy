@@ -57,8 +57,9 @@ function MealBlock({ meal }) {
         onChange={(e) => setScheduledDate(e.target.value)}
         placeholder="Schedule meal"
       />
-      <button onClick={logMeal}>Log Meal</button>
       <button onClick={scheduleMeal}>Schedule Meal</button>
+      <button onClick={logMeal}>Log Meal</button>
+   
     </div>
   );
 }
