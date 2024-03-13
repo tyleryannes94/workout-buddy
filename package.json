@@ -2,7 +2,7 @@
   "name": "workout-buddy",
   "version": "1.0.0",
   "description": "This is a workout app",
-  "main": "server/server.js",
+  "main": "backend/server.js",
   "scripts": {
     "start": "node backend/server.js",
     "develop": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev\"",
