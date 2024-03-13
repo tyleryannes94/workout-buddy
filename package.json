@@ -1,0 +1,25 @@
+{
+  "name": "workout-buddy",
+  "version": "1.0.0",
+  "description": "This is a workout app ",
+  "main": "npm start",
+  "scripts": {
+    "test": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tyleryannes94/workout-buddy.git"
+  },
+  "keywords": [
+    "workout",
+    "chatgpt",
+    "social",
+    "proof"
+  ],
+  "author": "Picante Programmers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tyleryannes94/workout-buddy/issues"
+  },
+  "homepage": "https://github.com/tyleryannes94/workout-buddy#readme"
+}
