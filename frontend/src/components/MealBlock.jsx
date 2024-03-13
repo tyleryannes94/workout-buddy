@@ -35,11 +35,13 @@ function MealBlock({ meal }) {
     }
   };
   return (
-    <div>
+    <div className="border-accent">
       <h3>{meal.mealType}</h3>
-      <p>Description: {meal.description}</p>
+      {meal.description && meal.description.trim() !== '' && ( 
+        <p>Description: {meal.description}</p>
+      )}
       <p>Calories: {meal.calories}</p>
-      {meal.ingredients && (
+      {meal.ingredients && meal.ingredients.length > 0 && (
         <>
           <p>Ingredients:</p>
           <ul>
@@ -47,16 +49,16 @@ function MealBlock({ meal }) {
               <li key={index}>{ingredient}</li>
             ))}
           </ul>
-          <input
-            type="date"
-            value={scheduledDate}
-            onChange={(e) => setScheduledDate(e.target.value)}
-            placeholder="Schedule meal"
-          />
-          <button onClick={scheduleMeal}>Schedule Meal</button>
-          <button onClick={logMeal}>Log Meal</button>
         </>
       )}
+      <input
+        type="date"
+        value={scheduledDate}
+        onChange={(e) => setScheduledDate(e.target.value)}
+        placeholder="Schedule meal"
+      />
+      <button onClick={logMeal}>Log Meal</button>
+      <button onClick={scheduleMeal}>Schedule Meal</button>
     </div>
   );
 }
