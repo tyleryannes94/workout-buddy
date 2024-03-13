@@ -16,17 +16,23 @@ const Login = () => {
                 },
                 body: JSON.stringify({ email, password }),
             });
-            if (response.ok) {
-                const data = await response.json(); 
-                console.log('Login successful', data);
+            if (!response.ok) {
+                console.error('Login failed with status:', response.status);
+                alert('Login failed. Please check your credentials and try again.');
+                return;
+            }
+            const contentType = response.headers.get('content-type');
+            if (!contentType || !contentType.includes('application/json')) {
+                throw new TypeError("No JSON!");
+            }
+            const data = await response.json();
+            console.log('Login successful', data);
     
-                if (data.user) {
-                    localStorage.setItem('userId', data.user); 
-                }
-    
-                navigate('/dashboard'); 
+            if (data.user) {
+                localStorage.setItem('userId', data.user);
+                navigate('/dashboard');
             } else {
-                console.error('Login failed');
+                console.error('Login failed: User ID not returned');
                 alert('Login failed. Please check your credentials and try again.');
             }
         } catch (error) {
