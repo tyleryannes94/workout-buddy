@@ -27,6 +27,13 @@ a:hover {
   color: black;
 }
 
+.border-accent {
+  border: 5px solid #A5CDFD;
+  padding: 10px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 body {
   margin: 0;
   display: flex;

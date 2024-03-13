@@ -35,15 +35,20 @@ function WorkoutBlock({ workout }) {
     }
   };
   return (
-    <div>
+    <div className="border-accent">
       <h3>{workout.workout_type}</h3>
-      <p>Description: {workout.workout_description}</p>
+      {workout.workout_description && workout.workout_description.trim() !== '' && (
+      <p>Description: {workout.workout_description}</p>)}  
       <p>Calories Burned: {workout.calories_burned}</p>
       <p>Exercises:</p>
-        {workout.workout_info.map((workout_info, index) => (
-          <li key={index}>{workout_info}</li>
-        ))}
-       <input
+      {workout.workout_info && workout.workout_info.length > 0 && (
+        <ul>
+          {workout.workout_info.map((info, index) => (
+            <li key={index}>{info}</li>
+          ))}
+        </ul>
+      )}
+      <input
         type="date"
         value={scheduledDate}
         onChange={(e) => setScheduledDate(e.target.value)}
