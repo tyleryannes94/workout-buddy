@@ -5,10 +5,10 @@
   "main": "server/server.js",
   "scripts": {
     "start": "node server/server.js --ignore client",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm run dev\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "seed": "cd server && npm run seed",
-    "build": "cd client && npm run build",
+    "develop": "concurrently \"cd backend && npm run watch\" \"cd frontend && npm run dev\"",
+    "install": "cd backend && npm i && cd ../frontend && npm i",
+    "seed": "cd backend && npm run seed",
+    "build": "cd frontend && npm run build",
   "render-build":"npm install && npm run build"
   },
   "repository": {
